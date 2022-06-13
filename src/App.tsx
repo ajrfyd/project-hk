@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useSelector, useDispatch } from 'react-redux';
+import menuReducer from './store/menu';
+import { RootState } from './store/index';
+import { goHome, goProfile } from './store/menu';
 
-function App() {
+const App = () => {
+  const { menu } = useSelector((state:RootState) => state);
+  const { home, profile } = menu;
+  const dispatch = useDispatch();
+
+
+  console.log(menu);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+      <button
+        onClick={() => {
+          if(home) dispatch(goProfile())
+          else dispatch(goHome())
+        }}
+      >
+        click
+      </button>
     </div>
   );
 }
