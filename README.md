@@ -30,3 +30,7 @@
   func(initialState, 'home');
 ``` 
 
+> ### 메뉴
+- home(parallax??)
+- profile(로그인 후 민감정보 열람)
+- playground

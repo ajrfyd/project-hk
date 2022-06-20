@@ -5,10 +5,12 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
+import { applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { legacy_createStore as createStore} from 'redux'
 import rootReducer from './store';
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const client = new QueryClient();
 
