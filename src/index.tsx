@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { Provider } from 'react-redux';
 import { applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { legacy_createStore as createStore} from 'redux'
 import rootReducer from './store';
+
+
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
@@ -26,5 +29,6 @@ root.render(
         <App />
       </Provider>
     </BrowserRouter>
+    <ReactQueryDevtools initialIsOpen={false}/>
   </QueryClientProvider>
 );
