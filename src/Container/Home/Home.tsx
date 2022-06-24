@@ -12,23 +12,14 @@ const Home = () => {
 
   return (
     <Container>
-      Hello Home??
+      홈에 오신것을 환영합니다!
       <button
         onClick={() => {  
           // dispatch(noti('Notification'));
           notify('Notification');
         }}
       >
-        click
-      </button>
-      <button onClick={() => dispatch(goHome())}>
-        home
-      </button>
-      <button onClick={() => dispatch(goProfile())}>
-        profile
-      </button>
-      <button onClick={() => dispatch(goPlayGround())}>
-        playground
+        Notification
       </button>
       <Notification />
     </Container>
@@ -38,5 +29,6 @@ const Home = () => {
 export default Home;
 
 const Container = styled.div`
-  
+  width: 100%;
+  height: 90vh;
 `

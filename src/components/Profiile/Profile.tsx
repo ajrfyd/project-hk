@@ -1,12 +1,18 @@
 import React from "react";
+import styled from "styled-components";
+import { commonContainerStyle } from "../../Style/styles";
 
 const Profile = () => {
 
   return (
-    <div>
+    <Container>
       Hello Profile??
-    </div>
+    </Container>
   )
 }
 
 export default Profile;
+
+const Container = styled.div`
+  ${commonContainerStyle};
+`

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Nanum+Myeongjo:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -6,20 +8,20 @@
   text-decoration: none;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  * {
-    background: #212529;
-    color: #fff;
-  }
-} */
+a {
+  color: inherit; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
 
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Amatic SC', cursive, 'Nanum Myeongjo', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

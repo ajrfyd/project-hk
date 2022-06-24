@@ -13,6 +13,7 @@ const App = () => {
         <Nav />
         <Routes>
           <Route path='/' element={<Home />}/>
+          <Route path='/home' element={<Home />}/>
           <Route path='/profile' element={<Profile />}/>
         </Routes>
       </Body>
@@ -24,4 +25,5 @@ export default App;
 
 const Body = styled.div`
   display: flex;
+  flex: 1;
 `
