@@ -4,7 +4,7 @@ const Header = () => {
 
   return (
     <Container>
-      HeaderSection
+      <h1>About HK</h1>
     </Container>
   )
 }

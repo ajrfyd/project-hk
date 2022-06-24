@@ -5,5 +5,9 @@ import { notify } from '../notify';
 export const useActions = () => {
   const dispatch = useDispatch();
 
-  return bindActionCreators(notify, dispatch);
+  const actions = {
+    notify,
+  }
+
+  return bindActionCreators(actions, dispatch);
 }

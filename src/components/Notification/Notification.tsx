@@ -5,7 +5,7 @@ import Toast from './Toast';
 
 const Notification = () => {
   const { notify } = useSelector((state: RootState) => state);
-  console.log(notify)
+  
   return (
     <Container>
       {
