@@ -1,18 +1,17 @@
 import styled from "styled-components";
 import { notify as noti } from '../../store/notify';
 import { useDispatch } from 'react-redux';
-import Notification from "../Notification/Notification";
+import Notification from "../../components/Notification/Notification";
 
 const Home = () => {
   const dispatch = useDispatch();
-
 
   return (
     <Container>
       Hello Home??
       <button
         onClick={() => {  
-          dispatch(noti('wow'));
+          dispatch(noti('Notification'));
         }}
       >
         click

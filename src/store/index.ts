@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import menu from "./menu";
-import notify from './notify';
+import menu from "./menu/reducer";
+import notify from './notify/reducer';
 
 const rootReducer = combineReducers({
   menu,

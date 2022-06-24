@@ -9,7 +9,7 @@ const Notification = () => {
   return (
     <Container>
       {
-        notify.notification.map(item => <Toast key={item.uuid} text='wow?' disappearTime={item.disappearTime}/> )
+        notify.notification.map(item => <Toast key={item.uuid} text={item.msg} disappearTime={item.disappearTime}/> )
       }
     </Container>
   )
