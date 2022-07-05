@@ -1,15 +1,37 @@
-import React from "react";
-import styled from "styled-components";
+import { useEffect, useState } from "react";
+import styled, { css, keyframes } from "styled-components";
 import { RootState } from "../../store";
 import { useSelector } from "react-redux";
 import { list } from "../../store/menu";
 import Menu from "../../components/Nav/Menu";
 
-const Nav = () => {
+type NavProps = {
+  visible: boolean;
+}
+
+type AnimateType = {
+  animate: boolean;
+  visible: boolean;
+}
+
+const Nav = ({ visible }: NavProps) => {
   const { menu } = useSelector((state: RootState) => state);
+  const [currVisible, setCurrVisible] = useState(visible);
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    if(currVisible && !visible) {
+      setAnimate(true);
+      setTimeout(() => setAnimate(false), 250);
+    }
+    
+    setCurrVisible(visible);
+  }, [visible, currVisible])
+
+  if(!animate && !currVisible) return null;
 
   return (
-    <Container>
+    <Container animate={animate} visible={visible}>
       <ul>
         {
           list.map(item => <Menu key={item}>{item}</Menu>)
@@ -20,13 +42,45 @@ const Nav = () => {
 }
 
 export default Nav;
+const slideInLeft = keyframes`
+  0% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    -ms-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0)
+  }
+`
 
-const Container = styled.nav`
+const slideOutLeft = keyframes`
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0)
+  }
+  100% {
+    visibility: hidden;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    -ms-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0)
+  }
+`
+
+const Container = styled.nav<AnimateType>`
   width: 15vw;
   height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-right: 1px solid rgba(0, 0, 0, .1);
-  /* display: none; */
+  animation-name: ${slideInLeft};
+  animation-duration: .5s;
+  animation-fill-mode: both;
+  ${(props) => props.animate && css`
+    animation-name: ${slideOutLeft};
+  `}
 `

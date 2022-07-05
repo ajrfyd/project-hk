@@ -30,6 +30,22 @@
   func(initialState, 'home');
 ``` 
 
+> Error log
+에러메세지 : Type 'Dispatch<SetStateAction<boolean>>' is not assignable to type
+setState boolean값을 변경할 때 파라미터를 설정해 줘야 한다.
+```js
+  type ChildProps = {
+    setState: (state: boolean) => void;
+  }
+```
+위의 방식대로 하면 setState(prev => !prev)가 작동하지 않는다. 
+```js
+  type ChildProps = {
+    setState: React.Dispatch<React.SetState<boolean>>
+  };
+  // 이렇게 설정해 주면 동작한다.
+```
+
 > ### 메뉴
 - home(parallax??)
 - profile(로그인 후 민감정보 열람)
