@@ -54,4 +54,5 @@ const VisibleBtn = styled.button`
   position: absolute;
   top: 10px;
   left: 10px;
+  transition: 1s;
 `

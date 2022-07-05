@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Nanum+Myeongjo:wght@400;700&display=swap');
 
+:root {
+  /* --ti-cursor-color: #000; */
+  --ti-cursor-margin-left: .15rem;
+}
+
 * {
   margin: 0;
   padding: 0;
