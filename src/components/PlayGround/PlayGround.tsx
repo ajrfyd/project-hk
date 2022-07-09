@@ -1,5 +1,6 @@
-import React from "react";
 import styled from 'styled-components';
+import { commonContainerStyle } from "../../Style/styles";
+
 
 const PlayGround = () => {
 
@@ -13,6 +14,5 @@ const PlayGround = () => {
 export default PlayGround;
 
 const Container = styled.div`
-  width: 100%;
-  height: 90vh;
+  ${commonContainerStyle};
 `

@@ -26,7 +26,7 @@ const Header = () => {
 export default Header;
 
 const Container = styled.header`
-  height: 10vh;
+  height: 15vh;
   box-shadow: 1px 0 5px rgba(0, 0, 0, .2); 
   display: flex;
   justify-content: space-around;
