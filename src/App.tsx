@@ -10,19 +10,23 @@ import { BsBoxArrowInRight, BsBoxArrowInLeft } from 'react-icons/bs';
 
 type BtnProps = {
   visible: boolean;
+  navWidth: number;
 }
 
 const App = () => {
   const [visible, setVisible] = useState(true);
+  const [navWidth, setNavWidth] = useState(0);
 
+  console.log(navWidth)
   return (
     <div>
       <Header />
       <Body >
-        <Nav visible={visible}/>
+        <Nav visible={visible} setNavWidth={setNavWidth}/>
         <VisibleBtn 
           onClick={() => setVisible(visible => !visible)}
           visible={visible}
+          navWidth={navWidth}
         >
           {
             visible ? <BsBoxArrowInLeft size={20}/> : <BsBoxArrowInRight size={20}/>
@@ -56,7 +60,7 @@ const VisibleBtn = styled.button<BtnProps>`
   left: 10px;
   transition: .3s;
   z-index: 10;
-  ${({ visible }) => visible && css`
-    left: 270px;
+  ${({ visible, navWidth }) => visible && css`
+    left: calc(${navWidth}px + 1rem);
   `}
 `

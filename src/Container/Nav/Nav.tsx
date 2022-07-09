@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, SetStateAction } from "react";
 import styled, { css, keyframes } from "styled-components";
 import { RootState } from "../../store";
 import { useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import Menu from "../../components/Nav/Menu";
 
 type NavProps = {
   visible: boolean;
+  setNavWidth: React.Dispatch<SetStateAction<number>>;
 }
 
 type AnimateType = {
@@ -14,10 +15,11 @@ type AnimateType = {
   visible: boolean;
 }
 
-const Nav = ({ visible }: NavProps) => {
+const Nav = ({ visible, setNavWidth }: NavProps) => {
   const { menu } = useSelector((state: RootState) => state);
   const [currVisible, setCurrVisible] = useState(visible);
   const [animate, setAnimate] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if(currVisible && !visible) {
@@ -26,12 +28,19 @@ const Nav = ({ visible }: NavProps) => {
     }
     
     setCurrVisible(visible);
-  }, [visible, currVisible])
+
+    if(navRef.current && currVisible) {
+      setNavWidth(navRef.current.clientWidth);
+    } else {
+      setNavWidth(0);
+    };
+  }, [visible, currVisible]);
+
 
   if(!animate && !currVisible) return null;
 
   return (
-    <Container animate={animate} visible={visible}>
+    <Container animate={animate} visible={visible} ref={navRef}>
       <ul>
         {
           list.map(item => <Menu key={item}>{item}</Menu>)
