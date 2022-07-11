@@ -1,4 +1,6 @@
 import { StateKeyType, DirType } from '../menu/types';
+import { goHome, goPlayGround, goProfile} from '../menu/actions';
+import React from 'react';
 
 interface StrType {
   [key: string]: string;
@@ -54,5 +56,16 @@ export const utils = {
     })
     
     return menuType;
+  },
+  menuChanger: (destination: React.ReactNode) => {
+    switch(destination) {
+      case 'home': {
+        return goHome();
+      }
+      case 'profile':
+        return goProfile();
+      case 'playground':
+        return goPlayGround();
+    }
   }
 }

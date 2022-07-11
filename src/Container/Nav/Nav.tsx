@@ -35,7 +35,7 @@ const Nav = ({ visible, setNavWidth }: NavProps) => {
       setNavWidth(0);
     };
   }, [visible, currVisible]);
-
+  console.log(menu)
 
   if(!animate && !currVisible) return null;
 
@@ -43,7 +43,7 @@ const Nav = ({ visible, setNavWidth }: NavProps) => {
     <Container animate={animate} visible={visible} ref={navRef}>
       <ul>
         {
-          list.map(item => <Menu key={item}>{item}</Menu>)
+          list.map(item => <Menu key={item} active={menu[item]}>{item}</Menu>)
         }
       </ul>
     </Container>

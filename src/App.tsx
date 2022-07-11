@@ -17,7 +17,6 @@ const App = () => {
   const [visible, setVisible] = useState(true);
   const [navWidth, setNavWidth] = useState(0);
 
-  console.log(navWidth)
   return (
     <div>
       <Header />
