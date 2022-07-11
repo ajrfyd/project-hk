@@ -31,6 +31,8 @@ const Container = styled.header`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  /* position: sticky;
+  top: 0; */
 
   span {
     font-size: 4rem;

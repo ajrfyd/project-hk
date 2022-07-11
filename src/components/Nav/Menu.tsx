@@ -29,9 +29,9 @@ const Menu = ({ children, active }: MenuProps) => {
       {/* <Link to={children === 'home' ? '/' : `/${children}`}>
         {children}
       </Link> */}
-      <div onClick={menuHandler}>
+      <span onClick={menuHandler}>
         {children}
-      </div>
+      </span>
     </Container>
   )
 }
@@ -81,7 +81,9 @@ const Container = styled.li<ActiveProps>`
         filter: hue-rotate(360deg);
       }
     }    */
-
+    span {
+      cursor: pointer;
+    }
   }
 
   
