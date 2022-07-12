@@ -40,11 +40,14 @@ const Home = ({ setVisible }: HomeProps) => {
         개발을 즐기며 성장하는 <span>이홍경</span> 입니다. 
       </Parall1>
       <Parall2 style={{ transform: `translateX(${position}px)`, opacity: (position - 100) / 50 }}>
-        즐거운 코딩으로 행복을 추구합니다.
+        <span>프론트엔드</span> 개발에 흥미가 있습니다.
       </Parall2>
-      <Parall3 style={{ opacity: (position - 500) / 50 }}>
-        어제보다 나은 오늘의 개발자가 되기 위해 노력합니다.
+      <Parall3 style={{ opacity: (position - 500) / 50}}>
+        새로운 시도를 두려워 하지 않습니다.
       </Parall3>
+      <Parall4 style={{ opacity: (position - 900) / 50 }}>
+        어제보다 나은 오늘의 개발자가 되기 위해 노력합니다.
+      </Parall4>
       <Notification />
     </Container>
   )
@@ -111,15 +114,27 @@ const Parall2 = styled.h1`
   ${commonParallStyle};
   position: absolute;
   right: 60%;
-  top: 500px;
+  top: 600px;
   opacity: 1;
+
+  span {
+    color: dodgerblue;
+  }
 `
 
 const Parall3 = styled.h1`
   ${commonParallStyle};
   position: relative;
+  top: 40%;
+  left: 60%;
+  opacity: 1;
+`
+
+const Parall4 = styled.h1`
+  ${commonParallStyle};
+  position: relative;
   text-align: center;
-  top: 50%;
+  top: 60%;
   opacity: 1;
   transition: .3s;
 `
