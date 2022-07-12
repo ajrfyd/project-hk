@@ -39,13 +39,14 @@ const Menu = ({ children, active }: MenuProps) => {
 export default Menu;
 
 const Container = styled.li<ActiveProps>`
-  /* display: block; */
   margin-top: 1rem;
   font-weight: bold;
   font-size: 2rem;
   padding: 0 1rem;
   transition: .5s;
   border-radius: 10px;
+  text-align: center;
+
   ${({ active }) => active && css `
     box-shadow: 2px 2px 2px #00000080, 
       2px 1px 12px #00000080,
@@ -61,9 +62,7 @@ const Container = styled.li<ActiveProps>`
 
   &:hover {
     animation: animate 3s linear infinite;
-    transform: scale(1.05);
-    /* text-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
-      0 0 200px #0072ff; */
+    transform: perspective(400px) rotateY(45deg) scale(1.05);
     box-shadow: 2px 2px 2px #00000080, 
       2px 1px 12px #00000080,
       2px 2px 10px #00000080, 

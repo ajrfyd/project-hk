@@ -18,30 +18,33 @@ const App = () => {
   const [navWidth, setNavWidth] = useState(0);
 
   return (
-    <div>
-      <Header />
-      <Body >
-        <Nav visible={visible} setNavWidth={setNavWidth}/>
-        <VisibleBtn 
-          onClick={() => setVisible(visible => !visible)}
-          visible={visible}
-          navWidth={navWidth}
-        >
-          {
-            visible ? <BsBoxArrowInLeft size={20}/> : <BsBoxArrowInRight size={20}/>
-          }
-        </VisibleBtn>
-        <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/profile' element={<Profile />}/>
-          <Route path='/playground' element={<PlayGround />}/>
-        </Routes>
-      </Body>
-    </div>
+    <Container >
+      {/* <Header /> */}
+      <Nav visible={visible} setNavWidth={setNavWidth}/>
+      <VisibleBtn 
+        onClick={() => setVisible(visible => !visible)}
+        visible={visible}
+        navWidth={navWidth}
+      >
+        {
+          visible ? <BsBoxArrowInLeft size={20}/> : <BsBoxArrowInRight size={20}/>
+        }
+      </VisibleBtn>
+      <Routes>
+        <Route path='/' element={<Home setVisible={setVisible}/>} />
+        <Route path='/profile' element={<Profile />}/>
+        <Route path='/playground' element={<PlayGround />}/>
+      </Routes>
+    </Container>
   );
 }
 
 export default App;
+
+const Container = styled.div`
+  display: flex;
+  height: 100vh;
+`
 
 const Body = styled.div`
   display: flex;

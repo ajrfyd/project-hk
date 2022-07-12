@@ -1,18 +1,24 @@
 import { useState, useEffect } from 'react';
 import styled from "styled-components";
 import Notification from "../../components/Notification/Notification";
-import { commonContainerStyle } from '../../Style/styles';
+import { commonContainerStyle, commonParallStyle } from '../../Style/styles';
 
 type HomeProps = {
-  visible: boolean;
+  // visible: boolean;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Home = () => {
+
+const Home = ({ setVisible }: HomeProps) => {
   const [position, setPosition] = useState(0);
 
   const onScroll = () => {
     setPosition(window.scrollY);
+    if(window.scrollY === 0) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
   };
 
   useEffect(() => {
@@ -44,26 +50,28 @@ export default Home;
 const Container = styled.div`
   ${commonContainerStyle};
   width: 100%;
-  /* overflow: hidden; */
+  overflow: hidden;
   min-height: 2000px;
+  /* height: 100%; */
 `
 
 const Parall1 = styled.h1`
-  font-size: 80px;
-  position: absolute;
-  left: 40%;
+  ${commonParallStyle};
+  position: relative;
+  top: 10%;
+  left: 60%;
 `
 
 const Parall2 = styled.h1`
-  font-size: 80px;
+  ${commonParallStyle};
   position: absolute;
-  right: 50%;
+  right: 60%;
   top: 500px;
 `
 
 const Parall3 = styled.h1`
-  font-size: 80px;
-  position: absolute;
+  ${commonParallStyle};
+  position: relative;
   text-align: center;
   top: 50%;
   opacity: 1;

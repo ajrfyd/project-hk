@@ -4,6 +4,7 @@ import { RootState } from "../../store";
 import { useSelector } from "react-redux";
 import { list } from "../../store/menu";
 import Menu from "../../components/Nav/Menu";
+import MiniProfile from './MiniProfile';
 
 type NavProps = {
   visible: boolean;
@@ -35,12 +36,12 @@ const Nav = ({ visible, setNavWidth }: NavProps) => {
       setNavWidth(0);
     };
   }, [visible, currVisible]);
-  console.log(menu)
 
   if(!animate && !currVisible) return null;
 
   return (
     <Container animate={animate} visible={visible} ref={navRef}>
+      <MiniProfile />
       <ul>
         {
           list.map(item => <Menu key={item} active={menu[item]}>{item}</Menu>)
@@ -51,6 +52,8 @@ const Nav = ({ visible, setNavWidth }: NavProps) => {
 }
 
 export default Nav;
+
+
 const slideInLeft = keyframes`
   0% {
     -webkit-transform: translate3d(-100%, 0, 0);
@@ -80,8 +83,8 @@ const slideOutLeft = keyframes`
 `
 
 const Container = styled.nav<AnimateType>`
-  width: 15vw;
-  height: 90vh;
+  width: 20vw;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,7 +92,9 @@ const Container = styled.nav<AnimateType>`
   animation-name: ${slideInLeft};
   animation-duration: .5s;
   animation-fill-mode: both;
+
   ${(props) => props.animate && css`
     animation-name: ${slideOutLeft};
   `}
+  /* overflow: hidden; */
 `
