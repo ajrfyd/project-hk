@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import styled, { keyframes } from "styled-components";
-import Notification from "../../components/Notification/Notification";
 import { commonContainerStyle, commonParallStyle } from '../../Style/styles';
 import { CgChevronDoubleDown } from 'react-icons/cg';
+import{ IoMdRocket } from 'react-icons/io';
 
 type HomeProps = {
   // visible: boolean;
@@ -20,6 +20,10 @@ const Home = ({ setVisible }: HomeProps) => {
     } else {
       setVisible(false);
     }
+  };
+
+  const scrollTop = () => {
+    window.scroll({ top: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -48,7 +52,9 @@ const Home = ({ setVisible }: HomeProps) => {
       <Parall4 style={{ opacity: (position - 900) / 50 }}>
         어제보다 나은 오늘의 개발자가 되기 위해 노력합니다.
       </Parall4>
-      <Notification />
+      <ScrollUpContainer onClick={scrollTop} style={{ opacity: (position - 900) / 90}}>
+        <IoMdRocket/> 
+      </ScrollUpContainer>
     </Container>
   )
 }
@@ -93,6 +99,24 @@ const ScrollDownContainer = styled.div`
     font-size: 1.5rem;
     transition: .1s;
     animation: ${bounce} 1s infinite;
+  }
+`
+
+const ScrollUpContainer = styled.button`
+  position: fixed;
+  border: none;
+  outline: none;
+  background-color: inherit;
+  font-size: 2rem;
+  cursor: pointer;
+  color: red;
+  right: 10px;
+  bottom: 10px;
+  opacity: 1;
+  transition: .2s;
+
+  &:hover {
+    transform: translateY(10px);
   }
 `
 
