@@ -150,7 +150,8 @@ const Parall3 = styled.h1`
   ${commonParallStyle};
   position: relative;
   top: 40%;
-  left: 60%;
+  /* left: 60%; */
+  text-align: right;
   opacity: 1;
 `
 
