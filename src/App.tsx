@@ -4,10 +4,10 @@ import Home from './Container/Home/Home';
 import Nav from './Container/Nav/Nav';
 import styled, { css } from 'styled-components';
 import Profile from './components/Profiile/Profile';
-import PlayGround from './components/PlayGround/PlayGround';
+import PlayGround1 from './components/PlayGround/PlayGround1';
 import { BsBoxArrowInRight, BsBoxArrowInLeft } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
-import useMenu from './components/hooks/useMenu';
+import useMenu from './hooks/useMenu';
 import { createBrowserHistory } from "history";
 
 type BtnProps = {
@@ -64,7 +64,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home setVisible={setVisible}/>} />
         <Route path='/profile' element={<Profile />}/>
-        <Route path='/playground' element={<PlayGround />}/>
+        <Route path='/playground1' element={<PlayGround1 />}/>
       </Routes>
     </Container>
   );

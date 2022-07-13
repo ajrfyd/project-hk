@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { utils } from '../../store/utils/utils';
-import { GO_HOME, GO_PLAYGROUND, GO_PROFILE, goPlayGround } from "../../store/menu/actions";
 
 type MenuProps = {
   children: React.ReactNode;

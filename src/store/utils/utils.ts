@@ -1,6 +1,7 @@
 import { StateKeyType, DirType } from '../menu/types';
-import { goHome, goPlayGround, goProfile} from '../menu/actions';
+import { goHome, goPlayGround1, goProfile} from '../menu/actions';
 import React from 'react';
+import axios from 'axios';
 
 interface StrType {
   [key: string]: string;
@@ -65,7 +66,11 @@ export const utils = {
       case 'profile':
         return goProfile();
       case 'playground':
-        return goPlayGround();
+        return goPlayGround1();
     }
+  },
+  getData: async (url: string) => {
+    const { data } = await axios.get(url);
+    return data;
   }
 }

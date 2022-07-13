@@ -1,4 +1,4 @@
-import { goHome, goProfile, goPlayGround } from "./actions";
+import { goHome, goProfile, goPlayGround1 } from "./actions";
 import { utils } from '../utils/utils';
 import { list } from "./actions";
 
@@ -11,14 +11,14 @@ const menuType = utils.makeInitialType(list);
 export type StateType = {
   home: boolean;
   profile: boolean;
-  playground: boolean;
+  playground1: boolean;
 }
 
 
 
-export type DirType = 'home' | 'profile' | 'playground';
+export type DirType = 'home' | 'profile' | 'playground1';
 
 export type ActionType =
 | ReturnType<typeof goHome>
 | ReturnType<typeof goProfile>
-| ReturnType<typeof goPlayGround>
+| ReturnType<typeof goPlayGround1>

@@ -1,17 +1,18 @@
 import styled from 'styled-components';
 import { commonContainerStyle } from "../../Style/styles";
+import Loading from '../Loading/Loading';
 
 
-const PlayGround = () => {
+const PlayGround1 = () => {
   console.log('playground')
   return (
     <Container>
-      Hello PlayGround??
+      asd
     </Container>
   )
 }
 
-export default PlayGround;
+export default PlayGround1;
 
 const Container = styled.div`
   ${commonContainerStyle};

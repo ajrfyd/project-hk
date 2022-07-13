@@ -92,6 +92,7 @@ const Container = styled.nav<AnimateType>`
   animation-name: ${slideInLeft};
   animation-duration: .5s;
   animation-fill-mode: both;
+  overflow: scroll;
 
   ${(props) => props.animate && css`
     animation-name: ${slideOutLeft};

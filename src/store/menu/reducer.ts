@@ -1,12 +1,12 @@
 import { StateType, ActionType } from "./types";
-import { GO_HOME, GO_PLAYGROUND, GO_PROFILE, changeDir } from './actions';
+import { GO_HOME, GO_PLAYGROUND1, GO_PROFILE, changeDir } from './actions';
 // import { changeDir } from './actions';
 import { utils } from "../utils/utils";
 
 const initialState: StateType = {
   home: true,
   profile: false,
-  playground: false,
+  playground1: false,
 }
 
 const menuReducer = (state = initialState, action: ActionType) => {
@@ -15,7 +15,7 @@ const menuReducer = (state = initialState, action: ActionType) => {
       return utils.changeDir(state, action.payload);
     case GO_PROFILE:
       return utils.changeDir(state, action.payload);
-    case GO_PLAYGROUND:
+    case GO_PLAYGROUND1:
       return utils.changeDir(state, action.payload);
     default: 
       return state;
