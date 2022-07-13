@@ -46,6 +46,23 @@ setState boolean값을 변경할 때 파라미터를 설정해 줘야 한다.
   // 이렇게 설정해 주면 동작한다.
 ```
 
+> Page에 Notion 넣는 방법 
+- npm i react-notion
+- 상단에 3가지 import
+- 주소로 데이터 요청하여 
+- NotionRenderer에 blockMap이라는 prop으로 넘겨준다.
+
+```js
+  import "react-notion/src/styles.css";
+  import "prismjs/themes/prism-tomorrow.css"; // only needed for code highlighting
+  import { NotionRenderer } from "react-notion";
+  // 주소 + notion의 url 주소 뒷부분이 Notion id이다.
+  const address = `https://notion-api.splitbee.io/v1/page/${process.env.REACT_APP_NOTION_ID}`;
+  <NotionRenderer blockMap={data} fullPage={true}/>
+
+  
+```
+
 > ### 메뉴
 - home(parallax??)
 - profile(로그인 후 민감정보 열람)

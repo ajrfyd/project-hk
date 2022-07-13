@@ -6,8 +6,9 @@ import styled, { css } from 'styled-components';
 import Profile from './components/Profiile/Profile';
 import PlayGround from './components/PlayGround/PlayGround';
 import { BsBoxArrowInRight, BsBoxArrowInLeft } from 'react-icons/bs';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from './store/index';
+import { useDispatch } from 'react-redux';
+import useMenu from './components/hooks/useMenu';
+import { createBrowserHistory } from "history";
 
 type BtnProps = {
   visible: boolean;
@@ -17,16 +18,35 @@ type BtnProps = {
 const App = () => {
   const [visible, setVisible] = useState(true);
   const [navWidth, setNavWidth] = useState(0);
-  const { menu } = useSelector((state: RootState) => state);
+  const menu = useMenu();
   const dispatch = useDispatch();
+  const history = createBrowserHistory();
 
   // 새로고침 해도 Home에 고정되지 않도록 수정
   useEffect(() => {
     const path = window.location.pathname.split('/')[1];
+    
     if(!menu[path]) {
-      dispatch({ type: `menu/GO_${path.toUpperCase()}`, payload: path });
+      if(path === '') {
+        dispatch({ type: 'menu/GO_HOME', payload: 'home' });
+      } else {
+        dispatch({ type: `menu/GO_${path.toUpperCase()}`, payload: path });
+      }
     }
+
+    history.listen((h) => {
+      const { action, location: { pathname }} = h;
+      const popPath = pathname.split('/')[1];
+      if(popPath === '') {
+        dispatch({ type: 'menu/GO_HOME', payload: 'home' });
+      } else {
+        dispatch({ type: `menu/GO_${popPath.toUpperCase()}`, payload: popPath });
+      }
+    })
   }, []);
+
+
+  console.log('App');
 
   return (
     <Container >

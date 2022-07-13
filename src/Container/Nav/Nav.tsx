@@ -36,7 +36,7 @@ const Nav = ({ visible, setNavWidth }: NavProps) => {
       setNavWidth(0);
     };
   }, [visible, currVisible]);
-
+  console.log('%cnav', 'color: red')
   if(!animate && !currVisible) return null;
 
   return (

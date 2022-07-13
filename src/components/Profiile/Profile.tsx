@@ -19,11 +19,10 @@ const Profile = () => {
     getNotionData();
   }, [])
 
-  console.log(data);
   
   return (
     <Container>
-      <NotionRenderer blockMap={data}/>
+      <NotionRenderer blockMap={data} fullPage={true}/>
     </Container>
   )
 }
