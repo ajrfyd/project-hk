@@ -25,11 +25,8 @@ const Menu = ({ children, active }: MenuProps) => {
   };
 
   return (
-    <Container active={active}>
-      {/* <Link to={children === 'home' ? '/' : `/${children}`}>
-        {children}
-      </Link> */}
-      <span onClick={menuHandler}>
+    <Container active={active} onClick={menuHandler}>
+      <span >
         {children}
       </span>
     </Container>
@@ -46,6 +43,7 @@ const Container = styled.li<ActiveProps>`
   transition: .5s;
   border-radius: 10px;
   text-align: center;
+  cursor: pointer;
 
   ${({ active }) => active && css `
     box-shadow: 2px 2px 2px #00000080, 
@@ -61,7 +59,7 @@ const Container = styled.li<ActiveProps>`
   }
 
   &:hover {
-    animation: animate 3s linear infinite;
+    animation: animate 3s linear;
     transform: perspective(400px) rotateY(45deg) scale(1.05);
     box-shadow: 2px 2px 2px #00000080, 
       2px 1px 12px #00000080,
@@ -71,17 +69,8 @@ const Container = styled.li<ActiveProps>`
       /* inset 2px 2px 10px #00000080,  */
       /* inset 2px 2px 10px #00000080, */
       inset 2px 2px 10px #00000080;
-
-    /* @keyframes animate {
-      from {
-        filter: hue-rotate(0deg);
-      }
-      to {
-        filter: hue-rotate(360deg);
-      }
-    }    */
-    span {
-      cursor: pointer;
+    &:nth-child(even) {
+      transform: perspective(400px) rotateY(-45deg) scale(1.05);
     }
   }
 

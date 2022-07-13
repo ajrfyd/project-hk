@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Container/Home/Home';
-import Header from './Container/Header/Header';
 import Nav from './Container/Nav/Nav';
 import styled, { css } from 'styled-components';
 import Profile from './components/Profiile/Profile';
 import PlayGround from './components/PlayGround/PlayGround';
 import { BsBoxArrowInRight, BsBoxArrowInLeft } from 'react-icons/bs';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from './store/index';
 
 type BtnProps = {
   visible: boolean;
@@ -16,6 +17,16 @@ type BtnProps = {
 const App = () => {
   const [visible, setVisible] = useState(true);
   const [navWidth, setNavWidth] = useState(0);
+  const { menu } = useSelector((state: RootState) => state);
+  const dispatch = useDispatch();
+
+  // 새로고침 해도 Home에 고정되지 않도록 수정
+  useEffect(() => {
+    const path = window.location.pathname.split('/')[1];
+    if(!menu[path]) {
+      dispatch({ type: `menu/GO_${path.toUpperCase()}`, payload: path });
+    }
+  }, []);
 
   return (
     <Container >

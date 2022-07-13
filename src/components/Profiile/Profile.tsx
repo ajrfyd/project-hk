@@ -6,7 +6,6 @@ const Profile = () => {
 
   return (
     <Container>
-      Hello Profile??
     </Container>
   )
 }
@@ -15,4 +14,6 @@ export default Profile;
 
 const Container = styled.div`
   ${commonContainerStyle};
+  height: 100%;
+  overflow: scroll;
 `
