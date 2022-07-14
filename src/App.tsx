@@ -4,11 +4,12 @@ import Home from './Container/Home/Home';
 import Nav from './Container/Nav/Nav';
 import styled, { css } from 'styled-components';
 import Profile from './components/Profiile/Profile';
-import PlayGround1 from './components/PlayGround/PlayGround1';
+import PlayGround1 from './components/PlayGround/PlayGround1/PlayGround1';
 import { BsBoxArrowInRight, BsBoxArrowInLeft } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import useMenu from './hooks/useMenu';
 import { createBrowserHistory } from "history";
+import channelService from './utils/channelService';
 
 type BtnProps = {
   visible: boolean;
@@ -25,7 +26,8 @@ const App = () => {
   // 새로고침 해도 Home에 고정되지 않도록 수정
   useEffect(() => {
     const path = window.location.pathname.split('/')[1];
-    
+    const channel = new channelService();
+
     if(!menu[path]) {
       if(path === '') {
         dispatch({ type: 'menu/GO_HOME', payload: 'home' });
@@ -43,11 +45,20 @@ const App = () => {
         dispatch({ type: `menu/GO_${popPath.toUpperCase()}`, payload: popPath });
       }
     })
+
+    if(channel) {
+      channel.boot({
+        pluginKey: process.env.REACT_APP_CAHNNEL_PLUG_KEY
+      })
+    }
+
+    return () => {
+      channel.shutdown();
+    };
   }, []);
 
 
   console.log('App');
-
   return (
     <Container >
       {/* <Header /> */}

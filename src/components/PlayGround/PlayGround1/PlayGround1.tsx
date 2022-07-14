@@ -1,13 +1,14 @@
 import styled from 'styled-components';
-import { commonContainerStyle } from "../../Style/styles";
-import Loading from '../Loading/Loading';
+import { commonContainerStyle } from "../../../Style/styles";
+import Loading from '../../Loading/Loading';
+import { useInfiniteQuery } from 'react-query';
+
 
 
 const PlayGround1 = () => {
   console.log('playground')
   return (
     <Container>
-      asd
     </Container>
   )
 }
