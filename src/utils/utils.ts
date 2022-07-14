@@ -1,34 +1,30 @@
-// import React, { useEffect } from "react";
+import { useEffect } from "react";
 
-// type ObserverProps = {
-//   target: HTMLDivElement | null,
-//   onInterSect: () => void,
-//   root: number | null,
-//   rootMargin: string,
-//   threshold: number
-// }
+type ObserverProps = {
+  target: HTMLElement,
+  onInterSect: IntersectionObserverCallback,
+  root?: Element | Document | null,
+  rootMargin?: string,
+  threshold?: number
+}
 
-// export const useObserver = ({ target, onInterSect, root = null, rootMargin = '0px', threshold = 1.0 }: ObserverProps) => {
-//   let observer: any;
-//   if(target) {
-//     if(target.current) {
+export const useObserver = ({ target, onInterSect, root = null, rootMargin = '0px', threshold = 1.0 }: ObserverProps) => {
+  
+  useEffect(() => {
+    if(!target) return;
+    let observer: IntersectionObserver;
 
-//     }
-//   }
-//   if(target && target.current) {
-//     observer = new IntersectionObserver(onInterSect, {
-//       root, rootMargin, threshold
-//     });
+    if(target) {
+      observer = new IntersectionObserver(onInterSect, {
+        root, rootMargin, threshold
+      });
 
-//     observer.ovserve(target.current);
-//   }
-//   useEffect(() => {
+      observer.observe(target);
+    }
 
-//   }, [])
-
-//   return () => {
-//     observer && observer.disconnect();
-//   }
-// }
-
-export default 1;
+    return () => {
+      // observer.unobserve(target);
+      observer && observer.disconnect();
+    }
+  }, [target, rootMargin, threshold])
+}

@@ -60,10 +60,10 @@ setState boolean값을 변경할 때 파라미터를 설정해 줘야 한다.
   const address = `https://notion-api.splitbee.io/v1/page/${process.env.REACT_APP_NOTION_ID}`;
   <NotionRenderer blockMap={data} fullPage={true}/>
 
-> Channel Talk 연동
-[참고](https://mingeesuh.tistory.com/entry/NextJS-%EC%B1%84%EB%84%90%ED%86%A1-Script-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0)
   
 ```
+> Channel Talk 연동
+[참고](https://mingeesuh.tistory.com/entry/NextJS-%EC%B1%84%EB%84%90%ED%86%A1-Script-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0)
 
 > ### 메뉴
 - home(parallax??)

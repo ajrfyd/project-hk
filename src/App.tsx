@@ -56,8 +56,7 @@ const App = () => {
       channel.shutdown();
     };
   }, []);
-
-
+  
   console.log('App');
   return (
     <Container >
