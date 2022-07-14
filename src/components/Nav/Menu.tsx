@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { utils } from '../../store/utils/utils';

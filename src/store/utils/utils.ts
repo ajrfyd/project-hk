@@ -1,5 +1,5 @@
 import { StateKeyType, DirType } from '../menu/types';
-import { goHome, goPlayGround1, goProfile} from '../menu/actions';
+import { goHome, goPlayGround, goProfile} from '../menu/actions';
 import React from 'react';
 import axios from 'axios';
 
@@ -66,7 +66,7 @@ export const utils = {
       case 'profile':
         return goProfile();
       case 'playground':
-        return goPlayGround1();
+        return goPlayGround();
     }
   },
   getData: async (url: string) => {

@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef, SetStateAction } from "react";
 import styled, { css, keyframes } from "styled-components";
-import { RootState } from "../../store";
-import { useSelector } from "react-redux";
 import { list } from "../../store/menu";
 import Menu from "../../components/Nav/Menu";
 import MiniProfile from './MiniProfile';
+import useMenu from '../../hooks/useMenu';
+import SubMenu from '../../components/PlayGround/SubMenu/SubMenu';
 
 type NavProps = {
   visible: boolean;
@@ -17,9 +17,11 @@ type AnimateType = {
 }
 
 const Nav = ({ visible, setNavWidth }: NavProps) => {
-  const { menu } = useSelector((state: RootState) => state);
+  // const { menu } = useSelector((state: RootState) => state);
+  const menu = useMenu();
   const [currVisible, setCurrVisible] = useState(visible);
   const [animate, setAnimate] = useState(false);
+  const [openSubMenu, setOpenSubMenu] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,7 +38,17 @@ const Nav = ({ visible, setNavWidth }: NavProps) => {
       setNavWidth(0);
     };
   }, [visible, currVisible]);
-  console.log('%cnav', 'color: red')
+
+  useEffect(() => {
+    const path = window.location.pathname.split('/')[1];
+    if(path === 'playground') {
+      setOpenSubMenu(true);
+    }
+
+    return () => setOpenSubMenu(false);
+  }, [menu])
+
+
   if(!animate && !currVisible) return null;
 
   return (
@@ -47,6 +59,10 @@ const Nav = ({ visible, setNavWidth }: NavProps) => {
           list.map(item => <Menu key={item} active={menu[item]}>{item}</Menu>)
         }
       </ul>
+      <hr style={{ width: '80%', marginTop: '2rem' }}/>
+      {
+        openSubMenu && <SubMenu />
+      }
     </Container>
   )
 }

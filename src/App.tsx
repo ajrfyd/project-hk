@@ -3,13 +3,14 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Container/Home/Home';
 import Nav from './Container/Nav/Nav';
 import styled, { css } from 'styled-components';
-import Profile from './components/Profiile/Profile';
-import PlayGround1 from './components/PlayGround/PlayGround1/PlayGround1';
+import Profile from './Container/Profiile/Profile';
+import PlayGround from './components/PlayGround/PlayGround';
 import { BsBoxArrowInRight, BsBoxArrowInLeft } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import useMenu from './hooks/useMenu';
 import { createBrowserHistory } from "history";
 import channelService from './utils/channelService';
+import Infinite from './components/PlayGround/SubMenu/Infinite/Infinite';
 
 type BtnProps = {
   visible: boolean;
@@ -56,7 +57,7 @@ const App = () => {
       channel.shutdown();
     };
   }, []);
-  
+
   console.log('App');
   return (
     <Container >
@@ -74,7 +75,8 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home setVisible={setVisible}/>} />
         <Route path='/profile' element={<Profile />}/>
-        <Route path='/playground1' element={<PlayGround1 />}/>
+        <Route path='/playground' element={<PlayGround />} />
+        <Route path='playground/infinite' element={<Infinite />}/>
       </Routes>
     </Container>
   );

@@ -28,3 +28,30 @@ export const useObserver = ({ target, onInterSect, root = null, rootMargin = '0p
     }
   }, [target, rootMargin, threshold])
 }
+
+export const playList = [
+  {
+    name: 'Infinite',
+    idx: 1,
+  },
+  {
+    name: 'Example1',
+    idx: 2,
+  },
+  {
+    name: 'Example2',
+    idx: 3,
+  },
+  {
+    name: 'Example3',
+    idx: 4,
+  },
+  {
+    name: 'Example4',
+    idx: 5,
+  },
+  {
+    name: 'Example5',
+    idx: 6,
+  },
+]

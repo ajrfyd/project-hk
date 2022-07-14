@@ -5,7 +5,7 @@ import "prismjs/themes/prism-tomorrow.css"; // only needed for code highlighting
 import { NotionRenderer } from "react-notion";
 import axios from "axios";
 import { useQuery } from 'react-query';
-import Loading from '../Loading/Loading';
+import Loading from '../../components/Loading/Loading';
 
 const Profile = () => {
   const address = `https://notion-api.splitbee.io/v1/page/${process.env.REACT_APP_NOTION_ID}`;
