@@ -18,7 +18,6 @@ const Infinite = () => {
   const OFFSET = 30;
 
   const getPoke = useCallback(async ({ pageParam = OFFSET }) => {
-    console.log(pageParam);
     const { data } = await axios.get(`${process.env.REACT_APP_POKE_API}`, {
       params: {
         limit: OFFSET,
@@ -33,7 +32,6 @@ const Infinite = () => {
       const { next } = lastPage;
       if(!next) return false;
       // return lastPage;
-      console.log(Number(new URL(next).searchParams.get("offset")));
       return Number(new URL(next).searchParams.get("offset"));
     }
   });
@@ -49,7 +47,6 @@ const Infinite = () => {
   });
 
 
-  console.log(data?.pages);
   return (
     <Container>
       <h1>Pokemon List</h1>

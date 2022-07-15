@@ -4,7 +4,6 @@ import { playList } from "../../utils/utils";
 
 const PlayGround = () => {
 
-  console.log('%cplayground State', 'color: red');
   return (
     <Container>
       <h1>- PlayGround List -</h1>

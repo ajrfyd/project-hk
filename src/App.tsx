@@ -59,7 +59,6 @@ const App = () => {
     };
   }, [dispatch]);
 
-  console.log('App');
   return (
     <Container >
       <Nav visible={visible} setNavWidth={setNavWidth}/>
