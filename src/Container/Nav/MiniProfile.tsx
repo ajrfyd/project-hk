@@ -1,25 +1,32 @@
 import styled from "styled-components";
 import { useQuery } from "react-query";
 import axios from "axios";
-
+import Loading from '../../components/Loading/Loading';
+import { GithbProfile } from './types';
 
 type Profile = {
   url: string;
 };
 
 const MiniProfile = () => {
+
   const getProfile = async () => {
-    const { data } = await axios.get('https://api.github.com/users/ajrfyd');
+    const { data } = await axios.get(`${process.env.REACT_APP_GITHUB_URL}`);
     return data;
   };
 
-  const { data, status } = useQuery('getProfile', getProfile);
+  const { data, status } = useQuery('getProfile', getProfile, {
+    refetchOnWindowFocus: false,
+  });
 
   if(!data) return null;
 
   return (
     <Container>
       <ProfileContainer>
+        {
+          status === 'loading' && <Loading />
+        }
         <Profile src={data.avatar_url}/>
         <span>{data.bio}</span>
       </ProfileContainer>

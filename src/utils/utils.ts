@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 type ObserverProps = {
-  target: HTMLElement,
+  target: HTMLElement | null,
   onInterSect: IntersectionObserverCallback,
   root?: Element | Document | null,
   rootMargin?: string,

@@ -37,8 +37,9 @@ const App = () => {
       }
     }
 
+    // 뒤로가기 감지
     history.listen((h) => {
-      const { action, location: { pathname }} = h;
+      const { location: { pathname }} = h;
       const popPath = pathname.split('/')[1];
       if(popPath === '') {
         dispatch({ type: 'menu/GO_HOME', payload: 'home' });
@@ -56,12 +57,11 @@ const App = () => {
     return () => {
       channel.shutdown();
     };
-  }, []);
+  }, [dispatch]);
 
   console.log('App');
   return (
     <Container >
-      {/* <Header /> */}
       <Nav visible={visible} setNavWidth={setNavWidth}/>
       <VisibleBtn 
         onClick={() => setVisible(visible => !visible)}
@@ -87,12 +87,6 @@ export default App;
 const Container = styled.div`
   display: flex;
   height: 100vh;
-`
-
-const Body = styled.div`
-  display: flex;
-  flex: 1;
-  position: relative;
 `
 
 const VisibleBtn = styled.button<BtnProps>`

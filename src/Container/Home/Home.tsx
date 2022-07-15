@@ -32,7 +32,7 @@ const Home = ({ setVisible }: HomeProps) => {
     return () => {
       window.removeEventListener('scroll', onScroll);
     }
-  }, []);
+  }, [onScroll]);
 
   return (
     <Container>

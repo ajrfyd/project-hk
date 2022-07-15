@@ -38,6 +38,7 @@ const Nav = ({ visible, setNavWidth }: NavProps) => {
       setNavWidth(0);
     };
   }, [visible, currVisible]);
+  
 
   useEffect(() => {
     const path = window.location.pathname.split('/')[1];
@@ -60,9 +61,7 @@ const Nav = ({ visible, setNavWidth }: NavProps) => {
         }
       </ul>
       <hr style={{ width: '80%', marginTop: '2rem' }}/>
-      {
-        openSubMenu && <SubMenu />
-      }
+      <SubMenu visible={openSubMenu}/>
     </Container>
   )
 }
