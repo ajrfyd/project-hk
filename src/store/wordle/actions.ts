@@ -1,0 +1,44 @@
+import { Dispatch } from "redux";
+import { ActionType, WordSetType, State } from "./types";
+import wordBank from '../../components/PlayGround/Wordle/wordle-bank.txt';
+import axios from "axios";
+export const GET_DATA = 'wordle_GET_DATA' as const;
+export const SET_DATA = 'wordle_SET_DATA' as const;
+export const SELECT_LETTER = 'wordle_SELECT_LETTER' as const;
+export const DELETE_LETTER = 'wordle_DELETE_LETTER' as const;
+export const ENTER_LETTER = 'wordle_ENTER_LETTER' as const;
+
+export const getData = (): any => async (dispatch: Dispatch<ActionType>) => {
+  try {
+    const { data } = await axios(wordBank);
+    const wordSet: Set<string> = new Set(data.split('\n'));
+    const todaysWord: string = data.split('\n')[Math.floor(Math.random() * wordSet.size)];
+
+    dispatch(setData({ wordSet, todaysWord }));
+  } catch(e) {
+    throw new Error("Error!!!")
+  }
+};
+
+export const setData = (data: WordSetType) => {
+  return {
+    type: SET_DATA,
+    payload: {
+      wordSet: data.wordSet,
+      todaysWord: data.todaysWord
+    },
+  }
+};
+
+export const selectLetter = (key: string) => {
+  return {
+    type: SELECT_LETTER,
+    payload: key,
+  }
+};
+
+export const deleteLetter = () => ({ type: DELETE_LETTER });
+export const enterLetter = () => ({ type: ENTER_LETTER });
+
+
+export default 1;

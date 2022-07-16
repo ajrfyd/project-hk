@@ -21,7 +21,7 @@ const Profile = () => {
 
   return (
     <Container>
-      <NotionRenderer blockMap={data} />
+      <NotionRenderer blockMap={data} fullPage={true}/>
     </Container>
   )
 }

@@ -2,7 +2,7 @@ import { StateKeyType, DirType } from './types';
 
 import { utils } from '../utils/utils';
 
-export const list = ['home', 'profile', 'playground']
+export const list = ['home', 'profile', 'playground'];
 
 const actionStr = utils.makeActionStr(list);
 const { home, profile, playground } = actionStr;

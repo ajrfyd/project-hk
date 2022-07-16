@@ -60,6 +60,15 @@ setState boolean값을 변경할 때 파라미터를 설정해 줘야 한다.
   const address = `https://notion-api.splitbee.io/v1/page/${process.env.REACT_APP_NOTION_ID}`;
   <NotionRenderer blockMap={data} fullPage={true}/>
 
+
+> typescript 에서 txt 파일 import 하기
+type.d.ts파일에 넣어라.
+```js
+declare module '*.txt' {
+  const content: string;
+  export default content;
+}
+```
   
 ```
 > Channel Talk 연동

@@ -35,7 +35,7 @@ export const playList = [
     idx: 1,
   },
   {
-    name: 'Example1',
+    name: 'Wordle',
     idx: 2,
   },
   {

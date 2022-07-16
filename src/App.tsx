@@ -11,6 +11,7 @@ import useMenu from './hooks/useMenu';
 import { createBrowserHistory } from "history";
 import channelService from './utils/channelService';
 import Infinite from './components/PlayGround/SubMenu/Infinite/Infinite';
+import Wordle from './components/PlayGround/Wordle/Wordle';
 
 type BtnProps = {
   visible: boolean;
@@ -59,6 +60,7 @@ const App = () => {
     };
   }, [dispatch]);
 
+  
   return (
     <Container >
       <Nav visible={visible} setNavWidth={setNavWidth}/>
@@ -76,6 +78,7 @@ const App = () => {
         <Route path='/profile' element={<Profile />}/>
         <Route path='/playground' element={<PlayGround />} />
         <Route path='playground/infinite' element={<Infinite />}/>
+        <Route path='playground/wordle' element={<Wordle />}/>
       </Routes>
     </Container>
   );

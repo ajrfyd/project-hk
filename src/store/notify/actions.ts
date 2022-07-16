@@ -5,7 +5,7 @@ import { NotifyAction } from './types';
 export const ENQ_NOTIFICATION = 'notify_ENQ_NOTI' as const;
 export const DEQ_NOTIFICATION = 'notify_DEQ_NOTI' as const;
 
-export const notify = (msg: string, disappearTime: number = 5000) => (dispatch: Dispatch<NotifyAction>) => {
+export const notify = (msg: string, disappearTime: number = 5000): any => (dispatch: Dispatch<NotifyAction>) => {
   const uuid = Math.random(); 
 
   dispatch(enqNotify(msg, disappearTime, uuid));

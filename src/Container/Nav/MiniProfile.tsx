@@ -10,12 +10,12 @@ type Profile = {
 
 const MiniProfile = () => {
 
-  const getProfile = async () => {
+  const getProfile = async (): Promise<GithbProfile> => {
     const { data } = await axios.get(`${process.env.REACT_APP_GITHUB_URL}`);
     return data;
   };
 
-  const { data, status } = useQuery('getProfile', getProfile, {
+  const { data, status, isLoading } = useQuery('getProfile', getProfile, {
     refetchOnWindowFocus: false,
   });
 
@@ -25,7 +25,7 @@ const MiniProfile = () => {
     <Container>
       <ProfileContainer>
         {
-          status === 'loading' && <Loading />
+          isLoading && <Loading />
         }
         <Profile src={data.avatar_url}/>
         <span>{data.bio}</span>
