@@ -1,4 +1,4 @@
-import { selectLetter, deleteLetter, enterLetter, getData, setData } from './actions';
+import { selectLetter, deleteLetter, enterLetter, setData, getData } from './actions';
 
 type CurrType = {
   try: number;
@@ -15,6 +15,7 @@ export type WordSetType = {
   todaysWord: string;
 }
 
+
 export type State = {
   wordSet: WordSetType;
   currentTry: CurrType;
@@ -29,3 +30,4 @@ export type ActionType =
   | ReturnType<typeof deleteLetter>
   | ReturnType<typeof enterLetter>
   | ReturnType<typeof setData>
+  | ReturnType<typeof getData>

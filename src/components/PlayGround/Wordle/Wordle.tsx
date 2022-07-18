@@ -5,9 +5,11 @@ import { boardDefault } from "./words";
 import { generateWordSet } from "./words";
 import Board from './Board';
 import useWordle from '../../../hooks/useWordle';
-import { useDispatch } from "react-redux";
-import { getData } from '../../../store/wordle/actions';
+import { useDispatch, useSelector } from "react-redux";
+import { reqData, getData } from '../../../store/wordle/actions';
 import { notify } from '../../../store/notify/actions';
+import { RootState } from '../../../store/index';
+import KeyBoard from './KeyBoard';
 
 type WordSet = {
   wordSet: Set<string>,
@@ -15,34 +17,38 @@ type WordSet = {
 };
 
 const Wordle = () => {
+  const wordle = useWordle();
   const [word, setWord] = useState(new Set<string>());
   const [answer, setAnswer] = useState('');
-  const [board, setBoard] = useState(boardDefault);
+  // const [board, setBoard] = useState(boardDefault);
+  // const [board, setBoard] = useState();
   const [currAttempt, setCurrAttempt] = useState({ try: 0, letterPos: 0 });
 
   const dispatch = useDispatch();
-  const wordle = useWordle();
-
-  
   // const getData = async () => {
-  //   const { wordSet, todaysWord } = await generateWordSet();
-  //   setWord(wordSet);
-  //   setAnswer(todaysWord);
-  // };
-
+    //   const { wordSet, todaysWord } = await generateWordSet();
+    //   setWord(wordSet);
+    //   setAnswer(todaysWord);
+    // };
+    
   useEffect(() => {
-    dispatch(getData());
-    // getData();
-  }, []);
+    dispatch(reqData());
 
-  console.log(wordle);
+    // if(wordle) {
+    //   setBoard(wordle.board);
+    // }
+  }, []);
+  
+  
   return (
     <Container>
       <Title>Wordle</Title>
       <GameContainer>
-        <Board 
-          board={board}
-        />        
+        {/* {
+          wordle && wordle.board && <Board board={wordle.board}/>
+        }*/}
+        <Board/>
+        <KeyBoard />
       </GameContainer>
     </Container>
   )
@@ -55,6 +61,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: scroll;
 `
 
 const Title = styled.header`
@@ -65,7 +72,6 @@ const Title = styled.header`
 `
 
 const GameContainer = styled.div`
-  border: 2px solid red;
   width: 100%;
   height: 100%;
   display: flex;

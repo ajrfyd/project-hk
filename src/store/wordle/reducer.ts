@@ -1,19 +1,30 @@
 import { boardDefault } from "../../components/PlayGround/Wordle/words";
 import { State, ActionType } from "./types";
-import { DELETE_LETTER, ENTER_LETTER, SELECT_LETTER, SET_DATA, selectLetter, deleteLetter, enterLetter } from "./actions";
+import { DELETE_LETTER, ENTER_LETTER, SELECT_LETTER, SET_DATA, selectLetter, deleteLetter, enterLetter, GET_DATA } from "./actions";
 import { generateWordSet } from "../../components/PlayGround/Wordle/words";
 
 const initialState: State = {
-  wordSet: { wordSet: new Set(''), todaysWord: ''},
+  wordSet: { wordSet: new Set(''), todaysWord: '' },
   currentTry: { try: 0, letterPos: 0 },
-  board: boardDefault,
+  board:[
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+    ['', '', '', '', '']
+  ],
   correctWord: '',
   disabledLetters: [],
   gameOver: { gameOver: false, guessWord: false},
 };
 
-const wordleReducer = (state: State = initialState, action: ActionType) => {
+const wordleReducer = (state = initialState, action: ActionType) => {
   switch(action.type) {
+    case GET_DATA:
+      return {
+        ...state
+      }
     case SET_DATA:
       return {
         ...state,

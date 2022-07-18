@@ -1,14 +1,20 @@
 import { Dispatch } from "redux";
+import { ThunkAction } from 'redux-thunk'
 import { ActionType, WordSetType, State } from "./types";
 import wordBank from '../../components/PlayGround/Wordle/wordle-bank.txt';
 import axios from "axios";
+export const REQ_DATA = 'wordle_REQ_DATA' as const;
 export const GET_DATA = 'wordle_GET_DATA' as const;
 export const SET_DATA = 'wordle_SET_DATA' as const;
 export const SELECT_LETTER = 'wordle_SELECT_LETTER' as const;
 export const DELETE_LETTER = 'wordle_DELETE_LETTER' as const;
 export const ENTER_LETTER = 'wordle_ENTER_LETTER' as const;
 
-export const getData = (): any => async (dispatch: Dispatch<ActionType>) => {
+
+// type Thunk = ThunkAction<Promise<any>, State, unknown, ActionType>
+
+export const reqData = (): any => async (dispatch: Dispatch<ActionType>) => {
+  // dispatch({ type: REQ_DATA })
   try {
     const { data } = await axios(wordBank);
     const wordSet: Set<string> = new Set(data.split('\n'));
@@ -19,6 +25,9 @@ export const getData = (): any => async (dispatch: Dispatch<ActionType>) => {
     throw new Error("Error!!!")
   }
 };
+
+export const getData = () => ({ type: GET_DATA });
+
 
 export const setData = (data: WordSetType) => {
   return {

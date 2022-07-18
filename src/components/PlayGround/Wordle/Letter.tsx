@@ -1,14 +1,24 @@
 import { useEffect } from "react";
 import styled from "styled-components";
+import useWordle from '../../../hooks/useWordle';
+import { useDispatch } from 'react-redux';
+import { getData } from '../../../store/wordle/actions';
+import { boardDefault } from './words';
 
 type LetterProps = {
   colPos: number;
   rowPos: number;
-  board: string[][];
+  // board: string[][];
 }
 
-const Letter = ({ colPos, rowPos, board }: LetterProps) => {
-  const letter = board[rowPos][colPos];
+const Letter = ({ colPos, rowPos }: LetterProps) => {
+  const wordle = useWordle;
+  // const { correctWord }  = wordle;
+  const letter = boardDefault[rowPos][colPos];
+
+  useEffect(() => {
+    getData();
+  }, [])
 
   return (
     <Container>
