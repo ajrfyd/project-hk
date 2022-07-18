@@ -68,7 +68,8 @@ const Container = styled.div`
 
 const Row = styled.div`
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   margin: 5px;
   height: 100%;
+  width: 90%;
 `

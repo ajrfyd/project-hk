@@ -9,22 +9,23 @@ export const SET_DATA = 'wordle_SET_DATA' as const;
 export const SELECT_LETTER = 'wordle_SELECT_LETTER' as const;
 export const DELETE_LETTER = 'wordle_DELETE_LETTER' as const;
 export const ENTER_LETTER = 'wordle_ENTER_LETTER' as const;
+export const SET_DISABLE = 'wordle_SET_DISABLE' as const;
 
 
 // type Thunk = ThunkAction<Promise<any>, State, unknown, ActionType>
 
-export const reqData = (): any => async (dispatch: Dispatch<ActionType>) => {
-  // dispatch({ type: REQ_DATA })
-  try {
-    const { data } = await axios(wordBank);
-    const wordSet: Set<string> = new Set(data.split('\n'));
-    const todaysWord: string = data.split('\n')[Math.floor(Math.random() * wordSet.size)];
+// export const reqData = (): any => async (dispatch: Dispatch<ActionType>) => {
+//   // dispatch({ type: REQ_DATA })
+//   try {
+//     const { data } = await axios(wordBank);
+//     const wordSet: Set<string> = new Set(data.split('\n'));
+//     const todaysWord: string = data.split('\n')[Math.floor(Math.random() * wordSet.size)];
 
-    dispatch(setData({ wordSet, todaysWord }));
-  } catch(e) {
-    throw new Error("Error!!!")
-  }
-};
+//     dispatch(setData({ wordSet, todaysWord }));
+//   } catch(e) {
+//     throw new Error("Error!!!")
+//   }
+// };
 
 export const getData = () => ({ type: GET_DATA });
 
@@ -48,6 +49,4 @@ export const selectLetter = (key: string) => {
 
 export const deleteLetter = () => ({ type: DELETE_LETTER });
 export const enterLetter = () => ({ type: ENTER_LETTER });
-
-
-export default 1;
+export const setDisableLetter = (letter: string) => ({ type: SET_DISABLE, payload: letter });

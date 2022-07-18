@@ -1,17 +1,33 @@
 import { useCallback, useEffect } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { selectLetter, deleteLetter, enterLetter } from '../../../store/wordle/actions';
+
 
 type KeyProps = {
   keyVal: string;
-  disabled: boolean;
+  disabled?: boolean;
+  bigKey?: boolean;
 }
 
-const Key = ({ keyVal, disabled }: KeyProps) => {
+const Key = ({ keyVal, disabled, bigKey }: KeyProps) => {
+  const dispatch = useDispatch();
 
-  
+  const onSelect = () => {
+    if(keyVal === 'Enter') {
+      dispatch(enterLetter());
+    } else if(keyVal === 'Delete') {
+      dispatch(deleteLetter());
+    } else {
+      dispatch(selectLetter(keyVal));
+    }
+  }
 
   return (
-    <Container>
+    <Container 
+      id={bigKey ? 'big' : disabled && 'disabled' || ''}
+      onClick={onSelect}
+    >
       {keyVal}
     </Container>
   )
@@ -31,6 +47,10 @@ const Container = styled.div`
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
+
+  #big {
+    width: 100px;
+  }
 
   &:hover {
     transform: scale(1.1);

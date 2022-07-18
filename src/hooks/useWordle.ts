@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import { State } from "../store/wordle/types";
 
-const useWordle = () => {
+const useWordle = (): State  => {
   const { wordle } = useSelector((state: RootState) => state);
   return wordle;
 };

@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import useWordle from '../../../hooks/useWordle';
 import { useDispatch } from 'react-redux';
-import { getData } from '../../../store/wordle/actions';
-import { boardDefault } from './words';
+import { setDisableLetter } from '../../../store/wordle/actions';
 
 type LetterProps = {
   colPos: number;
@@ -12,16 +11,27 @@ type LetterProps = {
 }
 
 const Letter = ({ colPos, rowPos }: LetterProps) => {
-  const wordle = useWordle;
-  // const { correctWord }  = wordle;
-  const letter = boardDefault[rowPos][colPos];
+  const dispatch = useDispatch();
+  const wordle = useWordle();
+  const { board, todaysWord, currentTry: { try: curTry }, disabledLetters } = wordle;
+  // console.log(currentTry)
+
+  const letter = board[rowPos][colPos];
+
+  const correct = todaysWord[colPos] === letter;
+  const almost = !correct && letter !== '' && String(todaysWord).toUpperCase().includes(letter);
+
+  const letterState = curTry > rowPos && (correct ? 'correct' : almost ? 'almost' : 'error');
+
 
   useEffect(() => {
-    getData();
-  }, [])
+    if(letter !== '' && !correct && !almost) {
+      dispatch(setDisableLetter(letter));
+    }
+  }, [curTry])
 
   return (
-    <Container>
+    <Container id={letterState || ''}>
       {letter}
     </Container>
   )

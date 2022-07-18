@@ -25,8 +25,9 @@ export const generateWordSet = async () => {
   //   todaysWord = wordArr[Math.floor(Math.random() * wordArr.length)];
   //   wordSet = new Set(wordArr);
   // })
-  
+
   const { data } = await axios.get(wordBank);
+  console.log(data);
   const wordSet: Set<string> = new Set(data.split('\n'));
   const todaysWord: string = data.split('\n')[Math.floor(Math.random() * wordSet.size)];
   return { wordSet, todaysWord };
