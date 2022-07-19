@@ -46,7 +46,6 @@ const KeyBoard = () => {
       dispatch(deleteLetter());
     } else {
       if(board[currentTry.try][4] !== '') {
-        console.log('zzz')
         return;
       }
       dispatchKey(keys1, e.key);
