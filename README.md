@@ -2,6 +2,7 @@
 
 > TypeScript 에서는 객체의 키로 string을 허용하지 않는다고 함.
 반드시 string literal type의 key로 접근 index signature를 선언해 줘야 함.
+[참조]:(https://soopdop.github.io/2020/12/01/index-signatures-in-typescript/)
 
 ```js
   // 이런 객체가 있다면 

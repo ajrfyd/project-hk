@@ -1,5 +1,5 @@
 import { State, ActionType } from "./types";
-import { DELETE_LETTER, ENTER_LETTER, SELECT_LETTER, SET_DATA, GET_DATA, SET_DISABLE } from "./actions";
+import { DELETE_LETTER, ENTER_LETTER, SELECT_LETTER, SET_DATA, SET_DISABLE } from "./actions";
 import { generateWordSet } from "../../components/PlayGround/Wordle/words";
 import wordSet, { todaysWord, board } from "./wordleStore";
 
@@ -24,10 +24,6 @@ const initialState: State = {
 
 const wordleReducer = (state = initialState, action: ActionType) => {
   switch(action.type) {
-    case GET_DATA:
-      return {
-        ...state
-      }
     case SET_DATA:
       // return {
       //   ...state,
@@ -56,7 +52,9 @@ const wordleReducer = (state = initialState, action: ActionType) => {
         }
       }
     case DELETE_LETTER:
-      if(state.currentTry.letterPos === 0) return;
+      // if(state.currentTry.letterPos === 0) {
+      //   return;
+      // }
       const newboard = [...state.board];
       newboard[state.currentTry.try][state.currentTry.letterPos - 1] = '';
 
@@ -80,7 +78,6 @@ const wordleReducer = (state = initialState, action: ActionType) => {
       if(state.wordSet.has(currWord.toLowerCase())) {
         newCurrTry = { try: state.currentTry.try + 1, letterPos: 0 };
       } else {
-        alert('Word Not Found!')
       }
 
       let newGameOver;

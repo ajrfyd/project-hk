@@ -4,9 +4,9 @@ import { commonContainerStyle } from "../../../Style/styles";
 import Board from './Board';
 import useWordle from '../../../hooks/useWordle';
 import { useDispatch, useSelector } from "react-redux";
-import { getData } from '../../../store/wordle/actions';
 import KeyBoard from './KeyBoard';
 import GameOver from "./GameOver";
+import Notification from '../../Notification/Notification';
 
 
 type WordSet = {
@@ -36,6 +36,7 @@ const Wordle = () => {
           gameOver ? <GameOver/> : <KeyBoard/>
         }
       </GameContainer>
+      <Notification />
     </Container>
   )
 }

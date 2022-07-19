@@ -20,6 +20,6 @@ export default Notification;
 const Container = styled.div`
   position: fixed;
   top: 10%;
-  left: 10px;
+  right: 10px;
   z-index: 99999999;
 `

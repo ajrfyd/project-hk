@@ -42,10 +42,11 @@ const Container = styled.div`
   border-radius: 4px;
   display: grid;
   place-items: center;
-  font-size: 20px;
+  font-size: 1.6rem;
   background-color: grey;
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  /* font-family: Arial, Helvetica, sans-serif; */
   cursor: pointer;
 
   #big {

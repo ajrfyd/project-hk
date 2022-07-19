@@ -24,8 +24,8 @@ const App = () => {
   const menu = useMenu();
   const dispatch = useDispatch();
   const history = createBrowserHistory();
-
   // 새로고침 해도 Home에 고정되지 않도록 수정
+
   useEffect(() => {
     const path = window.location.pathname.split('/')[1];
     const channel = new channelService();

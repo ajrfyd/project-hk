@@ -1,9 +1,9 @@
-import { notify, enqNotify, deqNotify } from "./actions";
+import { reqNotify, enqNotify, deqNotify } from "./actions";
 
 export type EnqType = {
   msg: string;
   disappearTime: number;
-  uuid: number;
+  uuid?: number;
 };
 
 export type State = {
@@ -11,7 +11,7 @@ export type State = {
 };
 
 export type NotifyAction = 
-  // | ReturnType<typeof notify>
+  | ReturnType<typeof reqNotify>
   | ReturnType<typeof enqNotify>
   | ReturnType<typeof deqNotify>
 ;

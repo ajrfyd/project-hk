@@ -1,4 +1,4 @@
-import { selectLetter, deleteLetter, enterLetter, setData, getData, setDisableLetter } from './actions';
+import { selectLetter, deleteLetter, enterLetter, setData, setDisableLetter } from './actions';
 
 type CurrType = {
   try: number;
@@ -41,5 +41,4 @@ export type ActionType =
   | ReturnType<typeof deleteLetter>
   | ReturnType<typeof enterLetter>
   | ReturnType<typeof setData>
-  | ReturnType<typeof getData>
   | ReturnType<typeof setDisableLetter>

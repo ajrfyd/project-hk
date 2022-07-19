@@ -38,7 +38,7 @@ export default Toast;
 
 const fadeInLeft = keyframes`
   0% {
-    transform: translateX(-100%);
+    transform: translateX(100%);
   }
   100% {
     transform: translateX(0)
@@ -46,8 +46,9 @@ const fadeInLeft = keyframes`
 `
 
 const Container = styled.div`
+  font-weight: bold;
   color: #fff;
-  background: #6200ee;
+  background: red;
   opacity: .9;
   box-shadow: 0 0 8px rgba(255, 255, 255, .8);
   animation-name: ${fadeInLeft};

@@ -1,5 +1,5 @@
 import { State, NotifyAction } from './types';
-import { ENQ_NOTIFICATION, DEQ_NOTIFICATION } from './actions';
+import { ENQ_NOTIFICATION, DEQ_NOTIFICATION, NOTIFY } from './actions';
 
 const initialState: State = {
   notification: [],
@@ -7,6 +7,8 @@ const initialState: State = {
 
 const notifyReducer = (state: State = initialState, action: NotifyAction): State => { 
   switch(action.type) {
+    case NOTIFY:
+      return state;
     case ENQ_NOTIFICATION:
       return {
         ...state,

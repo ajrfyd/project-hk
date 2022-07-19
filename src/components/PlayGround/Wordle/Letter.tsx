@@ -14,7 +14,6 @@ const Letter = ({ colPos, rowPos }: LetterProps) => {
   const dispatch = useDispatch();
   const wordle = useWordle();
   const { board, todaysWord, currentTry: { try: curTry }, disabledLetters } = wordle;
-  // console.log(currentTry)
 
   const letter = board[rowPos][colPos];
 
@@ -22,7 +21,6 @@ const Letter = ({ colPos, rowPos }: LetterProps) => {
   const almost = !correct && letter !== '' && String(todaysWord).toUpperCase().includes(letter);
 
   const letterState = curTry > rowPos && (correct ? 'correct' : almost ? 'almost' : 'error');
-
 
   useEffect(() => {
     if(letter !== '' && !correct && !almost) {
@@ -47,12 +45,25 @@ const Container = styled.div`
   place-items: center;
   font-size: 30px;
   font-weight: bolder;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+  /* font-family: Arial, Helvetica, sans-serif; */
 
   &:hover {
     transform: scale(1.1);
     border: 1px solid #6200ee;
     box-shadow: 0 0 2000px #6200ee;
   }
+
+  &#correct {
+    background-color: #77ff22;
+  }
+
+  &#almost {
+    background-color: #b49f39;
+  }
+
+  &#error {
+    background-color: #ddd;
+  }
+
 `
