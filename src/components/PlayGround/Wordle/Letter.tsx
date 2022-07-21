@@ -57,11 +57,14 @@ export default Letter;
 
 const Container = styled.div`
   flex: 1;
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, .4);
   margin: 5px;
   display: grid;
   place-items: center;
-  font-size: 30px;
+  font-size: 3rem;
   font-weight: bolder;
   color: #000;
   /* font-family: Arial, Helvetica, sans-serif; */
