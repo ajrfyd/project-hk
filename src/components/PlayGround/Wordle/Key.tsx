@@ -1,5 +1,4 @@
-import { useCallback, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { selectLetter, deleteLetter, enterLetter } from '../../../store/wordle/actions';
 
@@ -8,6 +7,11 @@ type KeyProps = {
   keyVal: string;
   disabled?: boolean;
   bigKey?: boolean;
+}
+
+type KeyProp = {
+  bigKey?: boolean;
+  disabled?: boolean;
 }
 
 const Key = ({ keyVal, disabled, bigKey }: KeyProps) => {
@@ -25,7 +29,8 @@ const Key = ({ keyVal, disabled, bigKey }: KeyProps) => {
 
   return (
     <Container 
-      id={bigKey ? 'big' : disabled && 'disabled' || ''}
+      bigKey={bigKey}
+      disabled={disabled}
       onClick={onSelect}
     >
       {keyVal}
@@ -35,7 +40,7 @@ const Key = ({ keyVal, disabled, bigKey }: KeyProps) => {
 
 export default Key;
 
-const Container = styled.div`
+const Container = styled.div<KeyProp>`
   width: 50px;
   height: 70px;
   margin: 5px;
@@ -49,9 +54,13 @@ const Container = styled.div`
   /* font-family: Arial, Helvetica, sans-serif; */
   cursor: pointer;
 
-  #big {
+  ${({ bigKey }) => bigKey && css`
     width: 100px;
-  }
+  `}
+
+  ${({ disabled }) => disabled && css`
+    background-color: red;
+  `}
 
   &:hover {
     transform: scale(1.1);

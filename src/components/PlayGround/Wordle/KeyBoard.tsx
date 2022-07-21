@@ -63,7 +63,6 @@ const KeyBoard = () => {
     }
   }, [onKeyboard]);
 
-  console.log(todaysWord)
   return (
     <Container>
       <Line1>

@@ -16,6 +16,7 @@ const Letter = ({ colPos, rowPos }: LetterProps) => {
   const wordle = useWordle();
   const { board, todaysWord, currentTry: { try: curTry }, disabledLetters } = wordle;
   const correctArr = todaysWord.split('');
+  // 한글자
   const letter = board[rowPos][colPos];
 
   const correctLetter = () => {
@@ -23,21 +24,24 @@ const Letter = ({ colPos, rowPos }: LetterProps) => {
     return correctArr[colPos] === board[rowPos][colPos].toLowerCase();
   }
 
+  // 한글자 맞춤 여부
   const correct = correctLetter();
   const almost = !correct && letter !== '' && String(todaysWord).toUpperCase().includes(letter);
 
   const letterState = curTry > rowPos && (correct ? 'correct' : almost ? 'almost' : 'error');
 
   useEffect(() => {
-    if(correct) {
+    // 모든 글자 정답
+    const win = todaysWord === board[rowPos].join('').toLowerCase();
+    if(correct && win) {
       dispatch(setGameWin(curTry));
     };
 
     if(letter !== '' && !correct && !almost) {
       dispatch(setDisableLetter(letter));
     }
-    console.log(curTry)
-    if(!correct && curTry === 5) {
+
+    if(!win && curTry === 5) {
       dispatch(setGameOver());
     }
   }, [curTry])

@@ -23,24 +23,22 @@ const Wordle = () => {
   // const [board, setBoard] = useState(boardDefault);
   // const [board, setBoard] = useState();
   // const [currAttempt, setCurrAttempt] = useState({ try: 0, letterPos: 0 });
-  const { gameOver, board, disabledLetters } = wordle;
+  const { gameOver, win } = wordle;
   const dispatch = useDispatch();
   
   useEffect(() => {
     // dispatch(reqData());
   }, []);
 
-  console.log(disabledLetters)
   return (
     <Container>
       <Title>Wordle</Title>
       <GameContainer>
         <Board/>
         {
-          gameOver ? <GameOver/> : <KeyBoard/>
+          (gameOver || win.win) ? <GameOver/> : <KeyBoard/>
         }
       </GameContainer>
-      <button onClick={() => dispatch(resetGame())}>asdasd</button>
       <Notification />
     </Container>
   )
