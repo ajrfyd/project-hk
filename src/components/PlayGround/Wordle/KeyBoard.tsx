@@ -5,6 +5,7 @@ import useWordle from '../../../hooks/useWordle';
 import { enterLetter, deleteLetter, selectLetter } from "../../../store/wordle";
 import { useDispatch } from "react-redux";
 import { notify } from "../../../store/notify/actions";
+import { todaysWord } from '../../../store/wordle/wordleStore';
 
 const KeyBoard = () => {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ const KeyBoard = () => {
     }
   }, [onKeyboard]);
 
+  console.log(todaysWord)
   return (
     <Container>
       <Line1>

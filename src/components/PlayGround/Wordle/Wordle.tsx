@@ -3,10 +3,12 @@ import styled from "styled-components";
 import { commonContainerStyle } from "../../../Style/styles";
 import Board from './Board';
 import useWordle from '../../../hooks/useWordle';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import KeyBoard from './KeyBoard';
 import GameOver from "./GameOver";
 import Notification from '../../Notification/Notification';
+import { resetGame } from '../../../store/wordle/actions';
+
 
 
 type WordSet = {
@@ -21,12 +23,14 @@ const Wordle = () => {
   // const [board, setBoard] = useState(boardDefault);
   // const [board, setBoard] = useState();
   // const [currAttempt, setCurrAttempt] = useState({ try: 0, letterPos: 0 });
-  const { gameOver } = wordle;
+  const { gameOver, board, disabledLetters } = wordle;
   const dispatch = useDispatch();
   
   useEffect(() => {
     // dispatch(reqData());
   }, []);
+
+  console.log(disabledLetters)
   return (
     <Container>
       <Title>Wordle</Title>
@@ -36,6 +40,7 @@ const Wordle = () => {
           gameOver ? <GameOver/> : <KeyBoard/>
         }
       </GameContainer>
+      <button onClick={() => dispatch(resetGame())}>asdasd</button>
       <Notification />
     </Container>
   )

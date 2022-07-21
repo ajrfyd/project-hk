@@ -2324,7 +2324,7 @@ export const board = [
   ['', '', '', '', ''],
   ['', '', '', '', ''],
   ['', '', '', '', ''],
-  ['', '', '', '', '']
+  // ['', '', '', '', '']
 ]
 
 export const todaysWord: string = data.split('\n')[Math.floor(Math.random() * wordSet.size)];

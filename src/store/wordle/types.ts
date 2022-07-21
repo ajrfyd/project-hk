@@ -1,4 +1,13 @@
-import { selectLetter, deleteLetter, enterLetter, setData, setDisableLetter } from './actions';
+import { 
+  selectLetter,
+  deleteLetter, 
+  enterLetter, 
+  setData, 
+  setDisableLetter, 
+  resetGame, 
+  setGameOver,
+  setGameWin
+} from './actions';
 
 type CurrType = {
   try: number;
@@ -15,6 +24,10 @@ export type WordSetType = {
   todaysWord: string;
 }
 
+export type Win = {
+  win: boolean;
+  attempt: number;
+}
 
 // export type State = {
 //   wordSet: WordSetType;
@@ -33,7 +46,7 @@ export type State = {
   // correctWord: string;
   disabledLetters: string[];
   gameOver: boolean;
-  guessWord: boolean
+  win: Win;
 }
 
 export type ActionType = 
@@ -42,3 +55,6 @@ export type ActionType =
   | ReturnType<typeof enterLetter>
   | ReturnType<typeof setData>
   | ReturnType<typeof setDisableLetter>
+  | ReturnType<typeof resetGame>
+  | ReturnType<typeof setGameOver>
+  | ReturnType<typeof setGameWin>

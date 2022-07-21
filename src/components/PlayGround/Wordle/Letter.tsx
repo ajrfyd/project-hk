@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import useWordle from '../../../hooks/useWordle';
 import { useDispatch } from 'react-redux';
 import { setDisableLetter } from '../../../store/wordle/actions';
+import { setGameWin, setGameOver } from '../../../store/wordle/actions';
 
 type LetterProps = {
   colPos: number;
@@ -14,17 +15,30 @@ const Letter = ({ colPos, rowPos }: LetterProps) => {
   const dispatch = useDispatch();
   const wordle = useWordle();
   const { board, todaysWord, currentTry: { try: curTry }, disabledLetters } = wordle;
-
+  const correctArr = todaysWord.split('');
   const letter = board[rowPos][colPos];
 
-  const correct = todaysWord[colPos] === letter;
+  const correctLetter = () => {
+    // 배열화 된 정답의 colPos 즉 5글자의 순서 중 board랑 같다면
+    return correctArr[colPos] === board[rowPos][colPos].toLowerCase();
+  }
+
+  const correct = correctLetter();
   const almost = !correct && letter !== '' && String(todaysWord).toUpperCase().includes(letter);
 
   const letterState = curTry > rowPos && (correct ? 'correct' : almost ? 'almost' : 'error');
 
   useEffect(() => {
+    if(correct) {
+      dispatch(setGameWin(curTry));
+    };
+
     if(letter !== '' && !correct && !almost) {
       dispatch(setDisableLetter(letter));
+    }
+    console.log(curTry)
+    if(!correct && curTry === 5) {
+      dispatch(setGameOver());
     }
   }, [curTry])
 
@@ -54,16 +68,18 @@ const Container = styled.div`
     box-shadow: 0 0 2000px #6200ee;
   }
 
-  &#correct {
-    background-color: #77ff22;
-  }
-
+  
   &#almost {
     background-color: #b49f39;
   }
-
+  
   &#error {
     background-color: #ddd;
   }
 
+  &#correct {
+    background-color: #11ec0ab8;
+    /* background-color: red; */
+  }
+  
 `

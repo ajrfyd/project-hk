@@ -1,5 +1,5 @@
 import { State, ActionType } from "./types";
-import { DELETE_LETTER, ENTER_LETTER, SELECT_LETTER, SET_DATA, SET_DISABLE } from "./actions";
+import { DELETE_LETTER, ENTER_LETTER, SELECT_LETTER, SET_DATA, SET_DISABLE, RESET_GAME, SET_GAME_OVER, SET_GAME_WIN } from './actions';
 import { generateWordSet } from "../../components/PlayGround/Wordle/words";
 import wordSet, { todaysWord, board } from "./wordleStore";
 
@@ -19,7 +19,10 @@ const initialState: State = {
   // correctWord: '',
   disabledLetters: [],
   gameOver: false,
-  guessWord: false
+  win: {
+    win: false,
+    attempt: 0
+  }
 };
 
 const wordleReducer = (state = initialState, action: ActionType) => {
@@ -108,6 +111,42 @@ const wordleReducer = (state = initialState, action: ActionType) => {
       return {
         ...state,
         disabledLetters: [...state.disabledLetters, action.payload]
+      }
+    case RESET_GAME:
+      return {
+        ...state,
+        todaysWord,
+        currentTry: {
+          ...state.currentTry,
+          try: 0,
+          letterPos: 0
+        },
+        board: state.board.map(item => {
+          if(item.length === 5) {
+            return ['', '', '', '', ''];
+          } else return item;
+        }),
+        gameOver: false,
+        win: {
+          ...state.win,
+          win: false,
+          attempt: 0
+        },
+        disabledLetters: state.disabledLetters.filter(item => item === '')
+      }
+    case SET_GAME_OVER:
+      return {
+        ...state,
+        gameOver: true,
+      }
+    case SET_GAME_WIN:
+      return {
+        ...state,
+        win: {
+          ...state.win,
+          win: true,
+          attempt: action.payload
+        }
       }
     default:
       return state;

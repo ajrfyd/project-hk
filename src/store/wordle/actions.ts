@@ -9,7 +9,9 @@ export const SELECT_LETTER = 'wordle_SELECT_LETTER' as const;
 export const DELETE_LETTER = 'wordle_DELETE_LETTER' as const;
 export const ENTER_LETTER = 'wordle_ENTER_LETTER' as const;
 export const SET_DISABLE = 'wordle_SET_DISABLE' as const;
-
+export const RESET_GAME ='wordle/RESET_GAME' as const;
+export const SET_GAME_OVER = 'wordle/SET_GAME_OVER' as const;
+export const SET_GAME_WIN = 'wordle/SET_GAME_WIN' as const;
 // export const getData = () => ({ type: GET_DATA });
 
 export const setData = (data: WordSetType) => {
@@ -32,8 +34,9 @@ export const selectLetter = (key: string) => {
 export const deleteLetter = () => ({ type: DELETE_LETTER });
 export const enterLetter = () => ({ type: ENTER_LETTER });
 export const setDisableLetter = (letter: string) => ({ type: SET_DISABLE, payload: letter });
-
-
+export const resetGame = () => ({ type: RESET_GAME });
+export const setGameOver = () => ({ type: SET_GAME_OVER });
+export const setGameWin = (attempt: number) => ({ type: SET_GAME_WIN, payload: attempt })
 
 
 // export const REQ_DATA = 'wordle_REQ_DATA' as const;

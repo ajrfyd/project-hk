@@ -45,13 +45,13 @@ const Board = () => {
         <Letter colPos={3} rowPos={4}/>
         <Letter colPos={4} rowPos={4}/>
       </Row>
-      <Row >
+      {/* <Row >
         <Letter colPos={0} rowPos={5}/>
         <Letter colPos={1} rowPos={5}/>
         <Letter colPos={2} rowPos={5}/>
         <Letter colPos={3} rowPos={5}/>
         <Letter colPos={4} rowPos={5}/>
-      </Row>
+      </Row> */}
     </Container>
   )
 }
