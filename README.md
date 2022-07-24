@@ -80,3 +80,8 @@ declare module '*.txt' {
 - home(parallax??)
 - profile(로그인 후 민감정보 열람)
 - playground
+
+> 해야할 것들
+- 반응형
+- 서브 메뉴들
+
