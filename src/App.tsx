@@ -12,6 +12,7 @@ import { createBrowserHistory } from "history";
 import channelService from './utils/channelService';
 import Infinite from './components/PlayGround/SubMenu/Infinite/Infinite';
 import Wordle from './components/PlayGround/Wordle/Wordle';
+import Board from './components/PlayGround/SubMenu/Board/Board';
 
 type BtnProps = {
   visible: boolean;
@@ -79,6 +80,7 @@ const App = () => {
         <Route path='/playground' element={<PlayGround />} />
         <Route path='playground/infinite' element={<Infinite />}/>
         <Route path='playground/wordle' element={<Wordle />}/>
+        <Route path='playground/board' element={<Board />}/>
       </Routes>
     </Container>
   );
