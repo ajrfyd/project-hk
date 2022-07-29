@@ -11,7 +11,7 @@ import useMenu from './hooks/useMenu';
 import { createBrowserHistory } from "history";
 import channelService from './utils/channelService';
 import Infinite from './components/PlayGround/SubMenu/Infinite/Infinite';
-import Wordle from './components/PlayGround/Wordle/Wordle';
+import Wordle from './components/PlayGround/SubMenu/Wordle/Wordle';
 import Board from './components/PlayGround/SubMenu/Board/Board';
 
 type BtnProps = {

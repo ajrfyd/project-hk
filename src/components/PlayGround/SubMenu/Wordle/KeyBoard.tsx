@@ -1,11 +1,11 @@
 import { useEffect, useCallback } from "react";
 import styled from "styled-components";
 import Key from "./Key";
-import useWordle from '../../../hooks/useWordle';
-import { enterLetter, deleteLetter, selectLetter } from "../../../store/wordle";
+import useWordle from '../../../../hooks/useWordle';
+import { enterLetter, deleteLetter, selectLetter } from "../../../../store/wordle";
 import { useDispatch } from "react-redux";
-import { notify } from "../../../store/notify/actions";
-import { todaysWord } from '../../../store/wordle/wordleStore';
+import { notify } from "../../../../store/notify/actions";
+import { todaysWord } from '../../../../store/wordle/wordleStore';
 
 const KeyBoard = () => {
   const dispatch = useDispatch();

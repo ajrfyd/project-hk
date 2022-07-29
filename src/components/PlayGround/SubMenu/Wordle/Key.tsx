@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { selectLetter, deleteLetter, enterLetter } from '../../../store/wordle/actions';
+import { selectLetter, deleteLetter, enterLetter } from '../../../../store/wordle/actions';
 
 
 type KeyProps = {

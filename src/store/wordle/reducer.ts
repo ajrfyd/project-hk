@@ -1,6 +1,6 @@
 import { State, ActionType } from "./types";
 import { DELETE_LETTER, ENTER_LETTER, SELECT_LETTER, SET_DATA, SET_DISABLE, RESET_GAME, SET_GAME_OVER, SET_GAME_WIN } from './actions';
-import { generateWordSet } from "../../components/PlayGround/Wordle/words";
+import { generateWordSet } from "../../components/PlayGround/SubMenu/Wordle/words";
 import wordSet, { todaysWord, board } from "./wordleStore";
 
 // const initialState: State = {

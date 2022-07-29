@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import { commonContainerStyle } from "../../../Style/styles";
+import { commonContainerStyle } from "../../../../Style/styles";
 import Board from './Board';
-import useWordle from '../../../hooks/useWordle';
+import useWordle from '../../../../hooks/useWordle';
 import { useDispatch } from "react-redux";
 import KeyBoard from './KeyBoard';
 import GameOver from "./GameOver";
-import Notification from '../../Notification/Notification';
-import { resetGame } from '../../../store/wordle/actions';
+import Notification from '../../../Notification/Notification';
+import { resetGame } from '../../../../store/wordle/actions';
 
 
 

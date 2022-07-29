@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import useWordle from '../../../hooks/useWordle';
+import useWordle from '../../../../hooks/useWordle';
 import { useDispatch } from 'react-redux';
-import { setDisableLetter } from '../../../store/wordle/actions';
-import { setGameWin, setGameOver } from '../../../store/wordle/actions';
+import { setDisableLetter } from '../../../../store/wordle/actions';
+import { setGameWin, setGameOver } from '../../../../store/wordle/actions';
 
 type LetterProps = {
   colPos: number;

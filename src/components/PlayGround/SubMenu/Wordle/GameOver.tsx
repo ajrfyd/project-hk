@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import useWordle from "../../../hooks/useWordle";
+import useWordle from "../../../../hooks/useWordle";
 import { useDispatch } from "react-redux";
-import { resetGame } from "../../../store/wordle";
+import { resetGame } from "../../../../store/wordle";
 
 const GameOver = () => {
   const { gameOver, win } = useWordle();
