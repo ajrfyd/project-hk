@@ -10,8 +10,8 @@ type Profile = {
 
 const MiniProfile = () => {
 
-  const getProfile = async (): Promise<GithbProfile> => {
-    const { data } = await axios.get(`${process.env.REACT_APP_GITHUB_URL}`);
+  const getProfile = async () => {
+    const { data } = await axios.get<GithbProfile>(`${process.env.REACT_APP_GITHUB_URL}`);
     return data;
   };
 
