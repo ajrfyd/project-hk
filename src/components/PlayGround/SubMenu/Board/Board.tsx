@@ -6,7 +6,7 @@ const Board = () => {
 
   return (
     <Container>
-      Hello Board??
+      <Title>Board</Title>
     </Container>
   )
 }
@@ -15,4 +15,7 @@ export default Board;
 
 const Container = styled.div`
   ${commonContainerStyle};
+`
+
+const Title = styled.h1`
 `
