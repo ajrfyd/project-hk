@@ -13,6 +13,7 @@ import channelService from './utils/channelService';
 import Infinite from './components/PlayGround/SubMenu/Infinite/Infinite';
 import Wordle from './components/PlayGround/SubMenu/Wordle/Wordle';
 import Board from './components/PlayGround/SubMenu/Board/Board';
+import Component from './components/PlayGround/SubMenu/Component/Component';
 
 type BtnProps = {
   visible: boolean;
@@ -81,6 +82,7 @@ const App = () => {
         <Route path='playground/infinite' element={<Infinite />}/>
         <Route path='playground/wordle' element={<Wordle />}/>
         <Route path='playground/board' element={<Board />}/>
+        <Route path='playground/component' element={<Component />}/>
       </Routes>
     </Container>
   );

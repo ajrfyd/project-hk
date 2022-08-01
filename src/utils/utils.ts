@@ -39,19 +39,11 @@ export const playList = [
     idx: 2,
   },
   {
-    name: 'Board',
+    name: 'Component',
     idx: 3,
   },
   {
-    name: 'Example3',
+    name: 'Board',
     idx: 4,
-  },
-  {
-    name: 'Example4',
-    idx: 5,
-  },
-  {
-    name: 'Example5',
-    idx: 6,
-  },
+  }
 ]
