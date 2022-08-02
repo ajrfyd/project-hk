@@ -15,120 +15,101 @@ const Resizable = () => {
     const resizerTop = topRef.current;
     const resizerBottom = bottomRef.current;
     const resizerLeft = leftRef.current;
+    
+    if(!resizableEle || !resizerRight || !resizerTop || !resizerBottom || !resizerLeft) return;
 
-    if(resizableEle && resizerRight && resizerTop && resizerBottom && resizerLeft) {
+    const styles = window.getComputedStyle(resizableEle);
+    let width = parseInt(styles.width, 10);
+    let height = parseInt(styles.height, 10);
+    let x = 0;
+    let y = 0;
+    resizableEle.style.top = '0';
+    resizableEle.style.left = '0';
+    //! Right resize
+    const onMouseMoveRightResize = (e: MouseEvent) => {
+      const dx = e.clientX - x;
+      x = e.clientX;
+      width = width + dx;
+      resizableEle.style.width = `${width}px`;
+    };
+    const onMouseUpRightResize = (e: MouseEvent) => {
+      document.removeEventListener('mousemove', onMouseMoveRightResize);
+    };
+    const onMouseDownRightResize = (e: MouseEvent) => {
+      x = e.clientX;
+      resizableEle.style.left = styles.left;
+      resizableEle.style.right = '';
+
+      document.addEventListener('mousemove', onMouseMoveRightResize);
+      document.addEventListener('mouseup', onMouseUpRightResize);
+    };
+    //! Top resize
+    const onMouseMoveTopResize = (e: MouseEvent) => {
+      const dy = e.clientY - y;
+      height = height - dy;
+      y = e.clientY;
+      resizableEle.style.height = `${height}px`;
+    };
+    const onMouseUpTopResize = () => {
+      document.removeEventListener('mousemove', onMouseMoveTopResize);
+    };
+    const onMouseDownTopResize = (e: MouseEvent) => {
+      y = e.clientY;
       const styles = window.getComputedStyle(resizableEle);
-      let width = parseInt(styles.width, 10);
-      let height = parseInt(styles.height, 10);
-      let x = 0;
-      let y = 0;
+      resizableEle.style.bottom = styles.bottom;
+      // resizableEle.style.top = '';
+      document.addEventListener('mousemove', onMouseMoveTopResize);
+      document.addEventListener('mouseup', onMouseUpTopResize);
+    };
+    //! Bottom resize
+    const onMouseMoveBottomResize = (e: MouseEvent) => {
+      const dy = e.clientY - y;
+      height = height + dy;
+      y = e.clientY;
+      resizableEle.style.height = `${height}px`;
+    };
+    const onMouseUpBottomResize = () => {
+      document.removeEventListener('mousemove', onMouseMoveBottomResize);
+    };
+    const onMouseDownBottomResize = (e: MouseEvent) => {
+      y = e.clientY;
+      const styles = window.getComputedStyle(resizableEle);
+      resizableEle.style.top = styles.top;
+      resizableEle.style.bottom = '';
+      document.addEventListener('mousemove', onMouseMoveBottomResize);
+      document.addEventListener('mouseup', onMouseUpBottomResize);
+    };
+    //! Left Resize
+    const onMouseMoveLeftResize = (e: MouseEvent) => {
+      const dx = e.clientX - x;
+      x = e.clientX;
+      width = width - dx;
+      resizableEle.style.width = `${width}px`;
+    };
+    const onMouseUpLeftResize = (e: MouseEvent) => {
+      document.removeEventListener('mousemove', onMouseMoveLeftResize);
+    };
+    const onMouseDownLeftResize = (e: MouseEvent) => {
+      x = e.clientX;
+      resizableEle.style.right = styles.right;
+      resizableEle.style.left = 'none';
 
-      resizableEle.style.top = '0';
-      resizableEle.style.left = '0';
-
-      //! Right resize
-      const onMouseMoveRightResize = (e: MouseEvent) => {
-        const dx = e.clientX - x;
-        x = e.clientX;
-        width = width + dx;
-        resizableEle.style.width = `${width}px`;
-      };
-
-      const onMouseUpRightResize = (e: MouseEvent) => {
-        document.removeEventListener('mousemove', onMouseMoveRightResize);
-      };
-
-      const onMouseDownRightResize = (e: MouseEvent) => {
-        x = e.clientX;
-        resizableEle.style.left = styles.left;
-        resizableEle.style.right = '';
-  
-        document.addEventListener('mousemove', onMouseMoveRightResize);
-        document.addEventListener('mouseup', onMouseUpRightResize);
-      };
-
-      //! Top resize
-      const onMouseMoveTopResize = (e: MouseEvent) => {
-        const dy = e.clientY - y;
-        height = height - dy;
-        y = e.clientY;
-        resizableEle.style.height = `${height}px`;
-      };
-
-      const onMouseUpTopResize = () => {
-        document.removeEventListener('mousemove', onMouseMoveTopResize);
-      };
-
-      const onMouseDownTopResize = (e: MouseEvent) => {
-        y = e.clientY;
-        const styles = window.getComputedStyle(resizableEle);
-        resizableEle.style.bottom = styles.bottom;
-        // resizableEle.style.top = '';
-        document.addEventListener('mousemove', onMouseMoveTopResize);
-        document.addEventListener('mouseup', onMouseUpTopResize);
-      };
-
-      //! Bottom resize
-      const onMouseMoveBottomResize = (e: MouseEvent) => {
-        const dy = e.clientY - y;
-        height = height + dy;
-        y = e.clientY;
-        resizableEle.style.height = `${height}px`;
-      };
-
-      const onMouseUpBottomResize = () => {
-        document.removeEventListener('mousemove', onMouseMoveBottomResize);
-      };
-
-      const onMouseDownBottomResize = (e: MouseEvent) => {
-        y = e.clientY;
-        const styles = window.getComputedStyle(resizableEle);
-        resizableEle.style.top = styles.top;
-        resizableEle.style.bottom = '';
-        document.addEventListener('mousemove', onMouseMoveBottomResize);
-        document.addEventListener('mouseup', onMouseUpBottomResize);
-      };
-
-      //! Left Resize
-      const onMouseMoveLeftResize = (e: MouseEvent) => {
-        const dx = e.clientX - x;
-        x = e.clientX;
-        width = width - dx;
-        resizableEle.style.width = `${width}px`;
-      };
-
-      const onMouseUpLeftResize = (e: MouseEvent) => {
-        document.removeEventListener('mousemove', onMouseMoveLeftResize);
-      };
-
-      const onMouseDownLeftResize = (e: MouseEvent) => {
-        x = e.clientX;
-        resizableEle.style.right = styles.right;
-        resizableEle.style.left = 'none';
-  
-        document.addEventListener('mousemove', onMouseMoveLeftResize);
-        document.addEventListener('mouseup', onMouseUpLeftResize);
-      };
-
-      //! Mouse Down event listener
-      
-      resizerRight.addEventListener('mousedown', onMouseDownRightResize);
-      // resizerTop.addEventListener('mousedown', onMouseDownTopResize);
-      resizerBottom.addEventListener('mousedown', onMouseDownBottomResize);
-      // resizerLeft.addEventListener('mousedown', onMouseDownLeftResize);
-
-      return () => {
-        resizerRight.removeEventListener('mousedown', onMouseDownRightResize);
-        // resizerTop.removeEventListener('mousedown', onMouseDownTopResize);
-        resizerBottom.removeEventListener('mousedown', onMouseDownBottomResize);
-        // resizerLeft.removeEventListener('mousedown', onMouseDownLeftResize);
-      }
-    }
-
-      
-
+      document.addEventListener('mousemove', onMouseMoveLeftResize);
+      document.addEventListener('mouseup', onMouseUpLeftResize);
+    };
+    //! Mouse Down event listener
+    
+    resizerRight.addEventListener('mousedown', onMouseDownRightResize);
+    // resizerTop.addEventListener('mousedown', onMouseDownTopResize);
+    resizerBottom.addEventListener('mousedown', onMouseDownBottomResize);
+    // resizerLeft.addEventListener('mousedown', onMouseDownLeftResize);
     return () => {
+      resizerRight.removeEventListener('mousedown', onMouseDownRightResize);
+      // resizerTop.removeEventListener('mousedown', onMouseDownTopResize);
+      resizerBottom.removeEventListener('mousedown', onMouseDownBottomResize);
+      // resizerLeft.removeEventListener('mousedown', onMouseDownLeftResize);
     }
+
   }, []);
 
   return (
