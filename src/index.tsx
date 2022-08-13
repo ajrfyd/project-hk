@@ -8,7 +8,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { Provider } from 'react-redux';
 import { applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { legacy_createStore as createStore} from 'redux'
+import { legacy_createStore as createStore } from 'redux'
 import rootReducer from './store';
 import logger from 'redux-logger';
 
