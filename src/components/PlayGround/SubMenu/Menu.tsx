@@ -73,6 +73,4 @@ const Container = styled.li<ActiveProp>`
       animation: ${goRight} .3s both;
     }
   `}
-
-
 `
